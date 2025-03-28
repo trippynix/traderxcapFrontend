@@ -1,0 +1,85 @@
+/* Sidebar styles */
+.sidebar {
+  background: rgb(133, 119, 255);
+  background: radial-gradient(
+    circle,
+    rgba(133, 119, 255, 1) 0%,
+    rgba(76, 76, 132, 1) 100%
+  );
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Full height */
+  width: 40px; /* Collapsed width */
+  transition: width 0.3s ease; /* Smooth transition */
+  overflow-x: hidden; /* Hide overflowing content */
+  font-size: 12px;
+}
+.sidebar:hover {
+  width: 250px; /* Expanded width */
+}
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+}
+.dashLogo {
+  height: 15px !important;
+}
+.mainDashLogo {
+  height: 40px !important;
+}
+.list-item {
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex; /* Align icon and text horizontally */
+  align-items: center;
+}
+.list-item img {
+  height: 25px;
+  transition: margin-right 0.3s ease; /* Smooth margin transition */
+}
+.list-item span {
+  opacity: 0; /* Hide text */
+  margin-left: 0;
+  transition: opacity 0.3s ease, margin-left 0.3s ease; /* Smooth visibility transition */
+  white-space: nowrap; /* Prevent wrapping */
+}
+.sidebar:hover .list-item span {
+  color: #ffffff;
+  opacity: 1; /* Show text */
+  margin-left: 10px; /* Add spacing between icon and text */
+}
+.sidebar .list-item:hover {
+  background-color: #575757;
+}
+
+/* SELECTED TABS CSS */
+.list-item-selected {
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex; /* Align icon and text horizontally */
+  align-items: center;
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: large;
+}
+.list-item-selected img {
+  height: 25px;
+  transition: margin-right 0.3s ease; /* Smooth margin transition */
+}
+.list-item-selected span {
+  opacity: 0; /* Hide text */
+  margin-left: 0;
+  transition: opacity 0.3s ease, margin-left 0.3s ease; /* Smooth visibility transition */
+  white-space: nowrap; /* Prevent wrapping */
+}
+.sidebar:hover .list-item-selected span {
+  color: #ffffff;
+  background-color: "#535252";
+  opacity: 1; /* Show text */
+  margin-left: 10px; /* Add spacing between icon and text */
+}
+.sidebar .list-item-selected:hover {
+  background-color: #575757;
+}

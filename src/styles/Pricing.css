@@ -1,0 +1,81 @@
+.heading {
+  font-size: 50px !important;
+}
+.toggle-container {
+  margin-top: 50px;
+  position: relative;
+  display: inline-flex;
+  width: 200px;
+  height: 40px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: black;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.slider.right {
+  left: 50%;
+}
+
+.btn-label {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  line-height: 40px;
+  z-index: 2;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+
+input[type="radio"]:checked + .btn-label {
+  color: white;
+}
+
+.btn-check {
+  display: none;
+}
+.underType {
+  font-size: 12px;
+}
+
+.signUpNow:hover {
+  background-color: black !important;
+  color: #ffffff !important;
+}
+
+.features {
+  font-size: 12.5px;
+}
+.Basic {
+  width: 35%;
+}
+.Pro {
+  width: 35%;
+}
+.recommended-box {
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff; /* Bright orange for visibility */
+  color: rgb(0, 0, 0);
+  padding: 5px 50px;
+  font-size: 14px;
+  font-weight: bold;
+  border: solid, 0.1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}

@@ -1,0 +1,22 @@
+.header {
+  background-color: #000000; /* Adjust to match your design */
+  color: #fff;
+  width: 100% !important; /* Ensure it spans the full width */
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.getStarted {
+  height: 40px !important;
+}
+
+.nav-link:hover {
+  color: #8677ff !important;
+}

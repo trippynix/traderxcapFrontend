@@ -1,0 +1,13 @@
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: "Montserrat";
+  padding: 10px 0;
+  width: 100%; /* Ensure it spans the full width */
+  font-size: smaller;
+}
+
+.footlinks:hover {
+  color: #8677ff !important;
+}

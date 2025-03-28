@@ -1,0 +1,46 @@
+.form-label {
+  font-size: small;
+}
+.form-check-input {
+  background-color: white;
+  border-color: black;
+}
+.form-check-input:checked {
+  background-color: black !important;
+  border-color: black;
+}
+.form-check-label {
+  font-size: small;
+  color: black;
+}
+.btn-secondary {
+  background-color: rgb(158, 156, 156);
+  border: none;
+  height: 50px;
+  border-radius: 32px;
+}
+.btn-secondary:hover {
+  background-color: black;
+}
+.btn-light {
+  border: solid;
+  border-width: 0.1px;
+  height: 50px;
+  border-radius: 32px;
+}
+.form-control {
+  border-radius: 12px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+}
+.card {
+  padding: 2em;
+}
+.passDiv {
+  margin-bottom: -15px !important;
+}
+.terms {
+  padding-left: 0%;
+}
+.hideButton {
+  text-decoration: none;
+}

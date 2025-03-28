@@ -1,0 +1,21 @@
+.theme-toggle-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  color: orange;
+}
+.profile {
+  background-color: white;
+  color: #000000;
+}
+.profile:hover {
+  background-color: #000000;
+  color: white;
+}
+.profileDark:hover {
+  background-color: white !important;
+  color: #000000 !important;
+}

@@ -1,0 +1,10 @@
+.featuresBorder {
+  border: 2px solid #8677ff;
+  border-radius: 10px;
+  padding: 10px;
+}
+.backgroundImage {
+  background-image: url("../assets/images/featuresSS/random.jpg");
+  background-size: cover;
+  background-position: center;
+}

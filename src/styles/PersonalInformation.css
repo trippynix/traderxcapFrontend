@@ -1,0 +1,19 @@
+.selectBtn {
+  height: 40px !important;
+  border-radius: 12px;
+  width: 100%;
+  border-color: #8577ff;
+  background: rgba(133, 119, 255, 1);
+}
+.phoneNumberClass {
+  padding: 0;
+  width: 100% !important;
+}
+.react-tel-input {
+  padding: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.otp:hover {
+  cursor: pointer;
+}
