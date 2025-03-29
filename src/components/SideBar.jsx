@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/Sidebar.css";
+import "../styles/SideBar.css";
 
 /* BLACK COLOR */
 import swing from "../assets/images/dashboard/black/swing.svg";
