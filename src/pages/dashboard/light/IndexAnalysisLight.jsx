@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../../../components/useAuthCheck";
 import DashboardHeaderLight from "../light/DashboardHeaderLight";
 import { IoIosArrowDown } from "react-icons/io";
-import SliderDark from "../IndexAnlaysisComponents/sliderDark";
+import SliderDark from "../IndexAnlaysisComponents/SliderDark";
 
 export default function IndexAnalysisLight() {
   const navigate = useNavigate();
