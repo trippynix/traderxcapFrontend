@@ -26,7 +26,7 @@ import VerifyEmailOTP from "../pages/VerifyEmailOTP";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <App />,
     children: [
       {
