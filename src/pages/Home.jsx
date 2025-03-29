@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import homePageLogo from "../assets/images/logo.svg";
-import videoPlaceholder from "../assets/images/videoPlaceholder.png";
+import videoPlaceholder from "../assets/images/VideoPlaceholder.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
