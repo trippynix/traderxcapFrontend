@@ -5,7 +5,7 @@ import { useAuthCheck } from "../../../components/useAuthCheck";
 import DashboardHeaderDark from "./DashboardHeaderDark";
 import "../../../styles/IndexAnalysis.css";
 import { IoIosArrowDown } from "react-icons/io";
-import SliderDark from "../IndexAnlaysisComponents/sliderDark";
+import SliderDark from "../IndexAnlaysisComponents/SliderDark";
 import OIChart from "../IndexAnlaysisComponents/OIChart";
 import OIChangeChart from "../IndexAnlaysisComponents/OIChangeChart";
 import OIChangeBarGraph from "../IndexAnlaysisComponents/OIChangeBarGraph";
