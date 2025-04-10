@@ -85,7 +85,7 @@ const Sidebar = ({ tab }) => {
               transition-all duration-300
               ${
                 selectedSideBarTab === link.name
-                  ? "underline font-bold text-black bg-opacity-20"
+                  ? "underline font-bold text-black border-b-2"
                   : "text-black w-full"
               }
               hover:bg-[#575757]

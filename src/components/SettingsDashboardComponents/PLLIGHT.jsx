@@ -169,20 +169,28 @@ const PLLIGHT = () => {
   };
   return (
     <>
-      <div className="bg-white ms-5">
+      <div className="bg-white ms-0">
         <div className="flex flex-row items-center mt-3 ms-4 mb-0 border-b border-black ">
-          <img src={profileLogo} alt="profileLogo" className="w-5 h-5 mr-2" />
-          <small className="text-black">Personal Information</small>
+          <img
+            src={profileLogo}
+            alt="profileLogo"
+            className="w-4 h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 md:mr-1 lg:mr-2"
+          />
+          <small className="text-black text-xs md:text-sm lg:text-base">
+            Personal Information
+          </small>
         </div>
 
         {/* Row 1: First Name + Gender */}
-        <div className="flex justify-around mt-3">
-          <div className="mx-5 mt-2 w-1/2">
-            <small className="text-black">First Name</small>
-            <div className="my-3 w-3/4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+            <small className="text-xs md:text-sm lg:text-base text-black">
+              First Name
+            </small>
+            <div className="my-1 md:my-2 lg:my-3 w-3/4">
               <input
                 type="text"
-                className={`w-full text-black bg-white border border-black px-2 py-1 rounded-md ${
+                className={`w-full text-xs md:text-sm lg:text-base text-black bg-white border border-black px-2 py-1 rounded-md ${
                   isEditing ? "" : "cursor-not-allowed"
                 }`}
                 name="firstName"
@@ -193,12 +201,14 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-1/2">
-            <small className="text-black">Gender</small>
-            <div className="my-3 w-3/4 relative">
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+            <small className="text-black text-xs md:text-sm lg:text-base">
+              Gender
+            </small>
+            <div className="my-1 md:my-2 lg:my-3 w-3/4 relative">
               <button
                 type="button"
-                className={`w-full py-1 px-2 text-left bg-white text-black border border-black rounded-md ${
+                className={`w-full py-1 px-2 text-left text-xs md:text-sm lg:text-base bg-white text-black border border-black rounded-md ${
                   isEditing ? "hover:cursor-pointer" : "cursor-not-allowed"
                 }`}
                 disabled={!isEditing}
@@ -209,11 +219,11 @@ const PLLIGHT = () => {
                 {formData.gender || "Select"}
               </button>
               {isGenderDropdownOpen && (
-                <ul className="absolute z-10 mt-1 w-full bg-black border border-gray-700 rounded-md">
+                <ul className="absolute z-10 mt-1 w-full bg-black text-xs md:text-sm lg:text-base border border-gray-700 rounded-md">
                   {["Male", "Female"].map((g) => (
                     <li key={g}>
                       <button
-                        className="w-full text-left text-white px-3 py-1 hover:bg-gray-800"
+                        className="w-full text-left text-white px-3 py-1 hover:bg-gray-800 active:bg-gray-800"
                         onClick={() => {
                           handleGenderSelect(g);
                           setIsGenderDropdownOpen(false);
@@ -230,13 +240,15 @@ const PLLIGHT = () => {
         </div>
 
         {/* Row 2: Last Name + Phone */}
-        <div className="flex justify-around mt-3">
-          <div className="mx-5 mt-2 w-1/2">
-            <small className="text-black">Last Name</small>
-            <div className="my-3 w-3/4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+            <small className="text-xs md:text-sm lg:text-base text-black">
+              Last Name
+            </small>
+            <div className="my-1 md:my-2 lg:my-3 w-3/4">
               <input
                 type="text"
-                className={`w-full text-black bg-white border border-black px-2 py-1 rounded-md ${
+                className={`w-full text-xs md:text-sm lg:text-base text-black bg-white border border-black px-2 py-1 rounded-md ${
                   isEditing ? "" : "cursor-not-allowed"
                 }`}
                 name="lastName"
@@ -247,23 +259,25 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-1/2">
-            <div className="flex items-center">
-              <small className="text-black">Phone</small>
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+            <div className="flex justify-between w-3/4 items-center">
+              <small className="text-xs md:text-sm lg:text-base text-black">
+                Phone
+              </small>
               {!valid && (
                 <small className="text-red-500 ml-2">
                   * Please enter a valid phone number.
                 </small>
               )}
               <a
-                className="ml-4 text-black border border-black px-2 py-1 rounded-md text-sm cursor-pointer"
+                className="ml-4 text-black border border-black px-2 py-1 rounded-md text-[10px] md:text-xs lg:text-sm cursor-pointer"
                 onClick={openPhoneModal}
               >
                 Verify
               </a>
             </div>
             <PhoneOtpModal />
-            <div className="my-3 w-3/4">
+            <div className="my-1 md:my-2 lg:my-3 w-3/4">
               <PhoneInput
                 country={"us"}
                 placeholder="Enter your phone number"
@@ -292,22 +306,24 @@ const PLLIGHT = () => {
         </div>
 
         {/* Row 3: Email + Country */}
-        <div className="flex justify-around mt-3">
-          <div className="mx-5 mt-2 w-1/2">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
             <div className="flex items-center">
-              <small className="text-black">Email</small>
+              <small className="text-xs md:text-sm lg:text-base text-black">
+                Email
+              </small>
               <a
-                className="ml-4 text-black border border-black px-2 py-1 rounded-md text-sm cursor-pointer"
+                className="ml-4 text-black border border-black px-2 py-1 rounded-md text-[10px] md:text-xs lg:text-sm cursor-pointer"
                 onClick={openEmailModal}
               >
                 Verify
               </a>
             </div>
             <EmailOtpModal />
-            <div className="my-3 w-3/4">
+            <div className="my-1 md:my-2 lg:my-3 w-3/4">
               <input
                 type="text"
-                className={`w-full text-black bg-white border border-black px-2 py-1 rounded-md ${
+                className={`w-full text-xs md:text-sm lg:text-base text-black bg-white border border-black px-2 py-1 rounded-md ${
                   isEditing ? "" : "cursor-not-allowed"
                 }`}
                 name="email"
@@ -318,12 +334,14 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-1/2">
-            <small className="text-black">Country</small>
-            <div className="my-3 w-3/4">
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+            <small className="text-xs md:text-sm lg:text-base text-black">
+              Country
+            </small>
+            <div className="my-1 md:my-2 lg:my-3 w-3/4">
               <input
                 type="text"
-                className={`w-full text-black bg-white border border-black px-2 py-1 rounded-md ${
+                className={`w-full text-xs md:text-sm lg:text-base text-black bg-white border border-black px-2 py-1 rounded-md ${
                   isEditing ? "" : "cursor-not-allowed"
                 }`}
                 name="country"
@@ -336,13 +354,15 @@ const PLLIGHT = () => {
         </div>
 
         {/* Row 4: Username + Experience */}
-        <div className="flex justify-around mt-3">
-          <div className="mx-5 mt-2 w-1/2">
-            <small className="text-black">UserName</small>
-            <div className="my-3 w-3/4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+            <small className="text-xs md:text-sm lg:text-base text-black">
+              UserName
+            </small>
+            <div className="my-1 md:my-2 lg:my-3 w-3/4">
               <input
                 type="text"
-                className={`w-full text-black bg-white border border-black px-2 py-1 rounded-md ${
+                className={`w-full text-xs md:text-sm lg:text-base text-black bg-white border border-black px-2 py-1 rounded-md ${
                   isEditing ? "" : "cursor-not-allowed"
                 }`}
                 name="username"
@@ -353,12 +373,12 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-1/2">
+          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <small className="text-black">Trading Experience</small>
-            <div className="my-3 w-3/4 relative">
+            <div className="my-1 md:my-2 lg:my-3 w-3/4 relative">
               <button
                 type="button"
-                className={`w-full py-1 px-2 text-left bg-white text-black border border-black rounded-md ${
+                className={`w-full py-1 px-2 text-xs md:text-sm lg:text-base text-left bg-white text-black border border-black rounded-md ${
                   isEditing ? "hover:cursor-pointer" : "cursor-not-allowed"
                 }`}
                 disabled={!isEditing}
@@ -369,11 +389,11 @@ const PLLIGHT = () => {
                 {formData.tradingExp || "Select"}
               </button>
               {isTradingDropdownOpen && (
-                <ul className="absolute z-10 mt-1 w-full bg-black border border-gray-700 rounded-md">
+                <ul className="absolute z-10 mt-1 w-full text-xs md:text-sm lg:text-base bg-black border border-gray-700 rounded-md">
                   {["0-2 Years", "2-5 Years", "5+ Years"].map((exp) => (
                     <li key={exp}>
                       <button
-                        className="w-full text-left text-white px-3 py-1 hover:bg-gray-800"
+                        className="w-full text-left text-white px-3 py-1 hover:bg-gray-800 active:bg-gray-800"
                         onClick={() => {
                           handleExperienceSelect(exp);
                           setIsTradingDropdownOpen(false);
@@ -392,7 +412,7 @@ const PLLIGHT = () => {
         {/* Edit/Save Button */}
         <button
           type="button"
-          className="block mx-auto bg-white border border-black text-black px-4 py-2 my-7 rounded-lg hover:bg-black hover:text-white hover:cursor-pointer"
+          className="block mx-auto bg-white border border-black text-xs md:text-sm lg:text-base text-black px-4 py-2 my-7 rounded-lg hover:bg-black hover:text-white hover:cursor-pointer active:bg-black active:text-white"
           onClick={handleSave}
         >
           {isEditing ? "Save" : "Edit"}

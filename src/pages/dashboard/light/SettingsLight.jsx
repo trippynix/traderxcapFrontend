@@ -32,11 +32,11 @@ export default function SettingsLight() {
             subTitle={"Edit and manage your personal and account settings here"}
           />
 
-          <div className="flex flex-row mt-4 px-2 border-2 border-white bg-white">
+          <div className="flex flex-row mt-1 md:mt-4 lg:mt-4 px-2 border-2 border-white bg-white">
             <ul className="flex flex-row bg-white">
-              <li className="p-5">
+              <li className="p-2 md:p-3 lg:p-5">
                 <a
-                  className={`cursor-pointer text-black hover:border-b-2 ${
+                  className={`cursor-pointer text-black text-[10px] md:text-sm lg:text-base hover:border-b-2 ${
                     selectedTab === "Personal Information"
                       ? "border-b-2 border-black"
                       : ""
@@ -49,9 +49,9 @@ export default function SettingsLight() {
                   Personal Information
                 </a>
               </li>
-              <li className="p-5">
+              <li className="p-2 md:p-3 lg:p-5">
                 <a
-                  className={`cursor-pointer text-black hover:border-b-2 ${
+                  className={`cursor-pointer text-black text-[10px] md:text-sm lg:text-base hover:border-b-2 ${
                     selectedTab === "Billing" ? "border-b-2 border-black" : ""
                   }`}
                   onClick={(e) => {
@@ -62,9 +62,9 @@ export default function SettingsLight() {
                   Billing
                 </a>
               </li>
-              <li className="p-5">
+              <li className="p-2 md:p-3 lg:p-5">
                 <a
-                  className={`cursor-pointer text-black hover:border-b-2 ${
+                  className={`cursor-pointer text-black text-[10px] md:text-sm lg:text-base hover:border-b-2 ${
                     selectedTab === "Change Password"
                       ? "border-b-2 border-black"
                       : ""
