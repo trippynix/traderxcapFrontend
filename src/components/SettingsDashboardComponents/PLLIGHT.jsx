@@ -183,7 +183,7 @@ const PLLIGHT = () => {
 
         {/* Row 1: First Name + Gender */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <small className="text-xs md:text-sm lg:text-base text-black">
               First Name
             </small>
@@ -201,7 +201,7 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <small className="text-black text-xs md:text-sm lg:text-base">
               Gender
             </small>
@@ -241,7 +241,7 @@ const PLLIGHT = () => {
 
         {/* Row 2: Last Name + Phone */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <small className="text-xs md:text-sm lg:text-base text-black">
               Last Name
             </small>
@@ -259,7 +259,7 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <div className="flex justify-between w-3/4 items-center">
               <small className="text-xs md:text-sm lg:text-base text-black">
                 Phone
@@ -307,7 +307,7 @@ const PLLIGHT = () => {
 
         {/* Row 3: Email + Country */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <div className="flex items-center">
               <small className="text-xs md:text-sm lg:text-base text-black">
                 Email
@@ -334,7 +334,7 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <small className="text-xs md:text-sm lg:text-base text-black">
               Country
             </small>
@@ -355,7 +355,7 @@ const PLLIGHT = () => {
 
         {/* Row 4: Username + Experience */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <small className="text-xs md:text-sm lg:text-base text-black">
               UserName
             </small>
@@ -373,7 +373,7 @@ const PLLIGHT = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <small className="text-black">Trading Experience</small>
             <div className="my-1 md:my-2 lg:my-3 w-3/4 relative">
               <button

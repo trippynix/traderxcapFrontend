@@ -82,13 +82,13 @@ export default function DashboardHeaderDark({ title, subTitle }) {
             >
               {themeMode === "dark" ? (
                 <div className="flex flex-row p-2">
-                  <Moon className="w-4 h-5 mr-2" />
-                  <p className="text-sm">Dark mode</p>
+                  <Sun className="w-4 h-5 mr-2" />
+                  <p className="text-sm">Light mode</p>
                 </div>
               ) : (
                 <div className="flex flex-row p-2">
-                  <Sun className="w-4 h-5 mr-2" />
-                  <p className="text-sm">Light mode</p>
+                  <Moon className="w-4 h-5 mr-2" />
+                  <p className="text-sm">Dark mode</p>
                 </div>
               )}
             </li>

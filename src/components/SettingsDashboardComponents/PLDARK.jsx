@@ -186,7 +186,7 @@ const PLDARK = () => {
 
         {/* Row 1: First Name + Gender */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <small className="text-xs md:text-sm lg:text-base text-white">
               First Name
             </small>
@@ -204,7 +204,7 @@ const PLDARK = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <small className="text-white text-xs md:text-sm lg:text-base">
               Gender
             </small>
@@ -244,7 +244,7 @@ const PLDARK = () => {
 
         {/* Row 2: Last Name + Phone */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <small className="text-xs md:text-sm lg:text-base text-white">
               Last Name
             </small>
@@ -262,7 +262,7 @@ const PLDARK = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <div className="flex justify-between w-3/4 items-center">
               <small className="text-xs md:text-sm lg:text-base text-white">
                 Phone
@@ -310,7 +310,7 @@ const PLDARK = () => {
 
         {/* Row 3: Email + Country */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <div className="flex justify-between w-3/4 items-center">
               <small className="text-xs md:text-sm lg:text-base text-white">
                 Email
@@ -337,7 +337,7 @@ const PLDARK = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <small className="text-xs md:text-sm lg:text-base text-white">
               Country
             </small>
@@ -358,7 +358,7 @@ const PLDARK = () => {
 
         {/* Row 4: Username + Experience */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around mt-3">
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2">
             <small className="text-xs md:text-sm lg:text-base text-white">
               UserName
             </small>
@@ -376,7 +376,7 @@ const PLDARK = () => {
             </div>
           </div>
 
-          <div className="mx-5 mt-2 w-full md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
+          <div className="mx-5 mt-2 md:w-1/2 lg:w-1/2 mt-3 md:mt-0 lg:mt-0">
             <small className="text-xs md:text-sm lg:text-base text-white">
               Trading Experience
             </small>
