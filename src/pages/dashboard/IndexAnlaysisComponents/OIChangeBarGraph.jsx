@@ -58,42 +58,44 @@ const CustomTooltip = ({ active, payload }) => {
 
 const OIChangeBarGraph = () => {
   return (
-    <div className="bg-dark border border-secondary rounded w-100">
-      <ResponsiveContainer className="pe-5" width="100%" height="75%">
-        <BarChart
-          data={data}
-          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid
-            stroke="rgba(255, 255, 255, 0.2)"
-            strokeDasharray="0"
-            vertical={false}
-          />
-          <XAxis
-            dataKey="type"
-            stroke="rgba(255, 255, 255, 0.2)"
-            tick={{ fontSize: 12, fill: "white" }}
-          />
-          <YAxis
-            stroke="rgba(255, 255, 255, 0.2)"
-            tick={{ fontSize: 12, fill: "white" }}
-            domain={yDomain} // Set the dynamic domain
-            tickCount={7}
-          />
-          <Tooltip
-            content={CustomTooltip}
-            cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
-          />
+    <div className="bg-[#212429] border border-gray-600 rounded w-full">
+      <div className="h-[275px] pr-5">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={data}
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid
+              stroke="rgba(255, 255, 255, 0.2)"
+              strokeDasharray="0"
+              vertical={false}
+            />
+            <XAxis
+              dataKey="type"
+              stroke="rgba(255, 255, 255, 0.2)"
+              tick={{ fontSize: 12, fill: "white" }}
+            />
+            <YAxis
+              stroke="rgba(255, 255, 255, 0.2)"
+              tick={{ fontSize: 12, fill: "white" }}
+              domain={yDomain}
+              tickCount={7}
+            />
+            <Tooltip
+              content={CustomTooltip}
+              cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
+            />
+            <Bar barSize={40} dataKey="value">
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={getColor(entry)} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
 
-          <Bar barSize={40} dataKey="value">
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={getColor(entry)} />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-      <div className="text-white d-flex flex-column align-items-center">
-        <h5>Change in P/C</h5>
+      <div className="text-white flex flex-col items-center mt-4">
+        <h5 className="text-base font-semibold">Change in P/C</h5>
         <small>
           <small style={{ color: "#E96667" }}>Call</small> OI Change:{" "}
           {data[0].value}

@@ -43,7 +43,7 @@ function App() {
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
       <Context.Provider value={{ fetchUserDetails, user }}>
         <ToastContainer theme="dark" />
-        <main>
+        <main className="relative w-full min-h-screen">
           <Outlet />
         </main>
         {/* <Settings /> */}

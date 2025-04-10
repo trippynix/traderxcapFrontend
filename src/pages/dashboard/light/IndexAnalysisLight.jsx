@@ -5,6 +5,10 @@ import { useAuthCheck } from "../../../components/useAuthCheck";
 import DashboardHeaderLight from "../light/DashboardHeaderLight";
 import { IoIosArrowDown } from "react-icons/io";
 import SliderDark from "../IndexAnlaysisComponents/SliderDark";
+import OIChart from "../IndexAnlaysisComponents/OIChart";
+import OIChangeChart from "../IndexAnlaysisComponents/OIChangeChart";
+import OIChangeBarGraph from "../IndexAnlaysisComponents/OIChangeBarGraph";
+import OIPieChart from "../IndexAnlaysisComponents/OIPieChart";
 
 export default function IndexAnalysisLight() {
   const navigate = useNavigate();
@@ -22,6 +26,63 @@ export default function IndexAnalysisLight() {
   const equityOptionsRef = useRef(null);
   const etfOptionsRef = useRef(null);
 
+  // Equity selection
+  const [isEquitySelectionOpen, setIsEquitySelectionOpen] = useState(false);
+  const [selectedEquity, setSelectedEquity] = useState("NVDA");
+  const equities = ["NVDA", "AAPL", "AMZN", "PLTR"];
+
+  const toggleEquityDropdown = () =>
+    setIsEquitySelectionOpen(!isEquitySelectionOpen);
+
+  const handleEquitySelect = (eq) => {
+    setSelectedEquity(eq);
+    setIsEquitySelectionOpen(false);
+  };
+
+  // Equity Expiry Selection
+  const [isEquityExpirySelectionOpen, setIsEquityExpirySelectionOpen] =
+    useState(false);
+  const [selectedEquityExpiry, setSelectedEquityExpiry] = useState("April 3rd");
+  const equityExpiries = [
+    "April 3rd",
+    "April 10th",
+    "April 14th",
+    "April 17th",
+  ];
+
+  const toggleEquityExpiryDropdown = () =>
+    setIsEquityExpirySelectionOpen(!isEquityExpirySelectionOpen);
+
+  const handleEquityExpirySelect = (eq) => {
+    setSelectedEquityExpiry(eq);
+    setIsEquityExpirySelectionOpen(false);
+  };
+
+  // ETFs Selection
+  const [isETFSelectionOpen, setIsETFSelectionOpen] = useState(false);
+  const [selectedETF, setSelectedETF] = useState("SPY");
+  const etfs = ["SPY", "QQQ"];
+
+  const toggleETFDropdown = () => setIsETFSelectionOpen(!isETFSelectionOpen);
+
+  const handleETFSelect = (eq) => {
+    setSelectedETF(eq);
+    setIsETFSelectionOpen(false);
+  };
+
+  // ETFs expiry select
+  const [isETFExpirySelectionOpen, setIsETFExpirySelectionOpen] =
+    useState(false);
+  const [selectedETFExpiry, setSelectedETFExpiry] = useState("April 3rd");
+  const etfExpiries = ["April 3rd", "April 10th", "April 14th", "April 17th"];
+  const toggleETFExpiryDropdown = () =>
+    setIsETFExpirySelectionOpen(!isETFExpirySelectionOpen);
+
+  const handleETFExpirySelect = (eq) => {
+    setSelectedETFExpiry(eq);
+    setIsETFExpirySelectionOpen(false);
+  };
+
   const handleScroll = (ref) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -29,209 +90,264 @@ export default function IndexAnalysisLight() {
   };
 
   return (
-    <div className="d-flex flex-row">
-      <Sidebar tab={"Index Analysis"} />
-      <div
-        className="container-fluid d-flex flex-column"
-        style={{ backgroundColor: "#ffffff" }}
-      >
-        <DashboardHeaderLight
-          title={"Option Analysis"}
-          subTitle={
-            "Analyze and understand option chain to make better trading decisions."
-          }
-        />
-        <hr style={{ color: "black", backgroundColor: "black" }} />
-        <div
-          className="d-flex flex-row justify-content-around align-items-center"
-          style={{ marginTop: "12%", marginBottom: "35%" }}
-        >
-          <div
-            className="position-relative"
-            onMouseEnter={() => setIsEquityOptionsOpen(true)}
-            onMouseLeave={() => setIsEquityOptionsOpen(false)}
-          >
-            <button
-              type="button"
-              className="text-dark"
-              style={{ fontSize: "23px", backgroundColor: "white" }}
-              onClick={() => handleScroll(equityOptionsRef)}
+    <>
+      <div className="flex flex-row">
+        <Sidebar tab={"Index Analysis"} />
+        <div className="flex flex-col w-full bg-white">
+          <DashboardHeaderLight
+            title={"Option Analysis"}
+            subTitle={
+              "Analyze and understand option chain to make better trading decisions."
+            }
+          />
+          <hr className="border-gray-600 my-5 mx-5" />
+
+          {/* Top Dropdown Section */}
+          <div className="flex flex-row justify-around items-center mt-[12%] mb-[35%]">
+            {/* Equity Options Button */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsEquityOptionsOpen(true)}
+              onMouseLeave={() => setIsEquityOptionsOpen(false)}
             >
+              <button
+                type="button"
+                className="text-black text-[23px] hover:cursor-pointer"
+                onClick={() => handleScroll(equityOptionsRef)}
+              >
+                Equity Options
+              </button>
+              {isEquityOptionsOpen && (
+                <div className="absolute w-full mt-1 bg-[radial-gradient(circle,_rgba(133,119,255,1)_0%,_rgba(76,76,132,1)_100%)] text-white transition-opacity duration-100 ease-in-out z-10">
+                  {["NVDA", "AAPL", "AMZN", "PLTR"].map((item) => (
+                    <button
+                      key={item}
+                      href="#"
+                      className="block px-4 py-2 font-bold hover:bg-gray-700 w-full"
+                      onClick={() => {
+                        handleScroll(equityOptionsRef);
+                        setSelectedEquity(item);
+                      }}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* ETFs Options Button */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsETFOptionsOpen(true)}
+              onMouseLeave={() => setIsETFOptionsOpen(false)}
+            >
+              <button
+                type="button"
+                className="text-black text-[23px] hover:cursor-pointer"
+                onClick={() => handleScroll(etfOptionsRef)}
+              >
+                ETFs Options
+              </button>
+              {isETFOptionsOpen && (
+                <div className="absolute w-full mt-1 bg-[radial-gradient(circle,_rgba(133,119,255,1)_0%,_rgba(76,76,132,1)_100%)] text-white transition-opacity duration-100 ease-in-out z-10">
+                  {["SPY", "QQQ"].map((item) => (
+                    <button
+                      key={item}
+                      href="#"
+                      className="block px-4 py-2 font-bold w-full hover:bg-gray-700"
+                      onClick={() => {
+                        handleScroll(etfOptionsRef);
+                        setSelectedETF(item);
+                      }}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* === Equity Options Section === */}
+          <div ref={equityOptionsRef} className="text-black">
+            <h4 className="text-center my-10 text-xl font-semibold">
               Equity Options
-            </button>
-            {/* Dropdown Menu */}
-            {isEquityOptionsOpen && (
-              <div
-                className="dropdown-menu show w-100 mt-1 position-absolute gradient-color"
-                style={{
-                  transition: "opacity ease, transform ease",
-                  opacity: isEquityOptionsOpen ? 1 : 0,
-                  transform: isEquityOptionsOpen
-                    ? "translateY(0)"
-                    : "translateY(10px)",
-                  visibility: isEquityOptionsOpen ? "visible" : "hidden",
-                }}
-              >
-                <a href="#" className="dropdown-item fw-bold">
-                  NVDA
-                </a>
-                <a href="#" className="dropdown-item fw-bold">
-                  AAPL
-                </a>
-                <a href="#" className="dropdown-item fw-bold">
-                  AMZN
-                </a>
-                <a href="#" className="dropdown-item fw-bold">
-                  PLTR
-                </a>
+            </h4>
+            <div className="flex flex-row justify-around bg-[#212429] border border-gray-600 p-4 rounded-md mx-4">
+              <div className="flex flex-col space-y-10">
+                {/* Equity Dropdown */}
+                <div className="flex flex-row items-center space-x-4">
+                  <p className="mr-5">Equity:</p>
+                  <div className="relative inline-block">
+                    <button
+                      onClick={toggleEquityDropdown}
+                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
+                    >
+                      {selectedEquity} <IoIosArrowDown className="ml-2" />
+                    </button>
+
+                    {isEquitySelectionOpen && (
+                      <ul className="absolute mt-1 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded z-20">
+                        {equities.map((eq) => (
+                          <li key={eq}>
+                            <button
+                              href="#"
+                              onClick={() => handleEquitySelect(eq)}
+                              className="block px-4 py-2 font-bold hover:bg-gray-700"
+                            >
+                              {eq}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+
+                {/* Expiry Dropdown */}
+                <div className="flex flex-row items-center space-x-4">
+                  <p className="mr-5">Expiry:</p>
+                  <div className="relative inline-block">
+                    <button
+                      onClick={toggleEquityExpiryDropdown}
+                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
+                    >
+                      {selectedEquityExpiry} <IoIosArrowDown className="ml-2" />
+                    </button>
+
+                    {isEquityExpirySelectionOpen && (
+                      <ul className="absolute mt-1 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded z-20">
+                        {equityExpiries.map((date, i) => (
+                          <li key={i}>
+                            <button
+                              onClick={() => handleEquityExpirySelect(date)}
+                              className="w-full text-left px-4 py-2 font-bold hover:bg-gray-700 text-white"
+                            >
+                              {date}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
               </div>
-            )}
+
+              {/* Slider */}
+              <div className="w-3/4">
+                <SliderDark />
+              </div>
+            </div>
           </div>
 
-          <div
-            className="position-relative"
-            onMouseEnter={() => setIsETFOptionsOpen(true)}
-            onMouseLeave={() => setIsETFOptionsOpen(false)}
-          >
-            <button
-              type="button"
-              className="text-dark"
-              style={{ fontSize: "23px", backgroundColor: "white" }}
-              onClick={() => handleScroll(etfOptionsRef)}
-            >
+          <div className="my-10 px-4">
+            <OIChart />
+          </div>
+
+          <div className="flex flex-row mb-10 px-4">
+            <div className="w-[70%] mr-4">
+              <OIPieChart />
+            </div>
+            <div className="w-[30%]">
+              <OIChangeBarGraph />
+            </div>
+          </div>
+
+          <div className="mb-10 px-4">
+            <OIChangeChart />
+          </div>
+
+          {/* === ETF Options Section === */}
+          <div ref={etfOptionsRef} className="text-black">
+            <h4 className="text-center my-10 text-xl font-semibold">
               ETFs Options
-            </button>
-            {/* Dropdown Menu */}
-            {isETFOptionsOpen && (
-              <div
-                className="dropdown-menu show w-100 mt-1 position-absolute gradient-color"
-                style={{
-                  transition: "opacity ease, transform ease",
-                  opacity: isETFOptionsOpen ? 1 : 0,
-                  transform: isETFOptionsOpen
-                    ? "translateY(0)"
-                    : "translateY(0)",
-                  visibility: isETFOptionsOpen ? "visible" : "hidden",
-                }}
-              >
-                <a href="#" className="dropdown-item fw-bold">
-                  SPY
-                </a>
-                <a href="#" className="dropdown-item fw-bold">
-                  QQQ
-                </a>
-                <a href="#" className="dropdown-item fw-bold">
-                  Option 3
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Equity Options Section */}
-        <div ref={equityOptionsRef} className="text-dark">
-          <h4 className="text-center my-5">Equity Options</h4>
-          <div
-            className="card border border-secondary d-flex flex-row justify-content-around"
-            style={{ backgroundColor: "#323232" }}
-          >
-            <div className="d-flex flex-row">
-              <div className="d-flex flex-column">
-                <div className="d-flex flex-row mb-5">
-                  <p className="text-white m-0 p-0 me-4">Equity:</p>
-                  <div className="btn-group">
+            </h4>
+            <div className="flex flex-row justify-around bg-[#212429] border border-gray-600 p-4 rounded-md mx-4">
+              <div className="flex flex-col space-y-10">
+                {/* ETFs Dropdown */}
+                <div className="flex flex-row items-center space-x-4">
+                  <p className="mr-5">ETFs:</p>
+                  <div className="relative inline-block">
                     <button
-                      className="text-center py-1 "
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{
-                        borderRadius: "2px",
-                        backgroundColor: "#A5A4A4",
-                      }}
+                      onClick={toggleETFDropdown}
+                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
                     >
-                      NVDA
-                      <IoIosArrowDown className="ms-3" />
+                      {selectedETF} <IoIosArrowDown className="ml-2" />
                     </button>
-                    <ul className="dropdown-menu gradient-color">
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          NVDA
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          AAPL
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          AMZN
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          PLTR
-                        </a>
-                      </li>
-                    </ul>
+
+                    {isETFSelectionOpen && (
+                      <ul className="absolute mt-1 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded z-20">
+                        {etfs.map((eq) => (
+                          <li key={eq}>
+                            <button
+                              href="#"
+                              onClick={() => handleETFSelect(eq)}
+                              className="block px-4 py-2 font-bold hover:bg-gray-700"
+                            >
+                              {eq}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
-                <div className="d-flex flex-row">
-                  <p className="text-white m-0 p-0 me-4">Expiry:</p>
-                  <div className="btn-group">
+
+                {/* Expiry Dropdown */}
+                <div className="flex flex-row items-center space-x-4">
+                  <p className="mr-5">Expiry:</p>
+                  <div className="relative inline-block">
                     <button
-                      className="text-center py-1 "
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{
-                        borderRadius: "2px",
-                        backgroundColor: "#A5A4A4",
-                      }}
+                      onClick={toggleETFExpiryDropdown}
+                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
                     >
-                      April 3rd
-                      <IoIosArrowDown className="ms-3" />
+                      {selectedETFExpiry} <IoIosArrowDown className="ml-2" />
                     </button>
-                    <ul className="dropdown-menu gradient-color">
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          April 3rd
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          April 3rd
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          April 3rd
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item fw-bold" href="#">
-                          April 3rd
-                        </a>
-                      </li>
-                    </ul>
+
+                    {isETFExpirySelectionOpen && (
+                      <ul className="absolute mt-1 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded z-20">
+                        {etfExpiries.map((date, i) => (
+                          <li key={i}>
+                            <button
+                              onClick={() => handleETFExpirySelect(date)}
+                              className="w-full text-left px-4 py-2 font-bold hover:bg-gray-700 text-white"
+                            >
+                              {date}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div style={{ width: "75%" }}>
-              <SliderDark />
+              {/* Slider */}
+              <div className="w-3/4">
+                <SliderDark />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* ETFs Options Section */}
-        <div ref={etfOptionsRef} style={{ marginTop: "500px", color: "black" }}>
-          <h2>ETFs Options Section</h2>
-          <p>Details about ETFs options go here...</p>
+          <div className="my-10 px-4">
+            <OIChart />
+          </div>
+
+          <div className="flex flex-row mb-10 px-4">
+            <div className="w-[70%] mr-4">
+              <OIPieChart />
+            </div>
+            <div className="w-[30%]">
+              <OIChangeBarGraph />
+            </div>
+          </div>
+
+          <div className="mb-10 px-4">
+            <OIChangeChart />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

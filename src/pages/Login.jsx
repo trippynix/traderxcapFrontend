@@ -1,5 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import "../styles/Login.css";
+import { IoIosEyeOff } from "react-icons/io";
+import { IoIosEye } from "react-icons/io";
+import { IoCheckbox } from "react-icons/io5";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
+
 import { Link, useNavigate } from "react-router-dom";
 import SummaryAPI from "../common";
 import { toast } from "react-toastify";
@@ -9,6 +13,7 @@ import Footer from "../components/Footer";
 import { useAuthCheck } from "../components/useAuthCheck";
 
 export default function Login() {
+  const [checked, setChecked] = useState(false);
   const [isEyeOpen, setIsEyeOpen] = useState(false); // State to manage eye state
   const [isHovered, setIsHovered] = useState(false);
   const [passwordType, setPasswordType] = useState("password"); // State to manage password input type
@@ -71,15 +76,18 @@ export default function Login() {
   return (
     <>
       <Header />
-      <div className="my-5 d-flex align-items-center justify-content-center">
-        <div className="d-flex flex-column w-50 card">
-          <form className="row g-3" onSubmit={handleSubmit}>
-            <div style={{ color: "#333333" }}>
-              <h3 className="pb-3">Log in</h3>
+      <div className="bg-white flex items-center justify-center">
+        <div className="flex flex-col my-12 w-full lg:w-1/2 bg-white shadow-lg rounded-2xl p-6">
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <div className="text-black">
+              <h3 className="pb-3 text-2xl font-semibold">Log in</h3>
             </div>
 
-            <div className="col-12">
-              <label htmlFor="inputUsername" className="form-label">
+            <div className="w-full">
+              <label
+                htmlFor="inputUsername"
+                className="block mb-1 text-xs md:text-sm lg:text-sm font-medium text-black"
+              >
                 Username/Email
               </label>
               <input
@@ -87,108 +95,95 @@ export default function Login() {
                 name="email"
                 value={data.email}
                 onChange={handleOnChange}
-                className="form-control"
+                className="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black"
                 id="inputUsername"
               />
             </div>
-            <div className="passDiv col-12 d-flex justify-content-between">
-              <label htmlFor="inputPass" className="form-label m-0">
+
+            <div className="w-full flex justify-between items-center mb-1">
+              <label
+                htmlFor="inputPass"
+                className="text-xs md:text-sm lg:text-sm font-medium text-black"
+              >
                 Password
               </label>
-
-              <label
-                onMouseEnter={() => setIsHovered(true)} // Set hover state to true
-                onMouseLeave={() => setIsHovered(false)} // Set hover state to false
-                style={{
-                  color: isHovered ? "black" : "#666666", // Ensures the label is black by default
-                }}
+              <button
+                type="button"
                 onClick={handleToggle}
-                className="form-label p-0 m-0 btn btn-link hideButton d-flex align-items-center"
+                className="text-sm flex items-center hover:cursor-pointer text-gray-500 hover:text-black active:text-black"
               >
                 {isEyeOpen ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="me-1 bi bi-eye-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
-                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
-                  </svg>
+                  <IoIosEye className="w-5 h-5" />
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="me-1 bi bi-eye-slash-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
-                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
-                  </svg>
+                  <IoIosEyeOff className="w-5 h-5" />
                 )}
-                Hide
-              </label>
+              </button>
             </div>
-            <div className="col-12">
+
+            <div className="w-full">
               <input
                 type={passwordType}
                 name="password"
                 value={data.password}
                 onChange={handleOnChange}
-                className="form-control"
+                className="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black"
                 id="inputPass"
               />
             </div>
-            <div style={{ color: "#333333" }} className="col-12">
-              <div className="form-check">
-                <input
-                  className="form-check-input border border-dark"
-                  type="checkbox"
-                  id="gridCheck"
-                />
-                <label className="form-check-label" htmlFor="gridCheck">
+
+            {/*REMEMBER ME*/}
+            <div className="w-full">
+              <label className="inline-flex items-start space-x-2 text-xs md:text-sm lg:text-sm text-black">
+                <div onClick={() => setChecked(!checked)}>
+                  {checked ? (
+                    <IoCheckbox className="w-5 h-5" />
+                  ) : (
+                    <MdCheckBoxOutlineBlank className="w-5 h-5" />
+                  )}
+                </div>
+                <span className="text-xs md:text-sm lg:text-sm text-black">
                   Remember me
-                </label>
-              </div>
+                </span>
+              </label>
             </div>
-            <div style={{ color: "#333333" }} className="col-12">
-              <div className="form-check terms">
-                <label className="form-check-label" htmlFor="gridCheck">
-                  By continuing, you agree to our{" "}
-                  {/* Add link to terms and services here */}
-                  <a className="text-decoration-underline text-dark" href="/">
-                    Terms of use
-                  </a>{" "}
-                  and{" "}
-                  <a className="text-decoration-underline text-dark" href="/">
-                    Privacy Policy
-                  </a>
-                </label>
-              </div>
+
+            <div className="w-full text-xs md:text-sm lg:text-sm text-black">
+              <label className="block">
+                By continuing, you agree to our{" "}
+                <a href="/" className="underline">
+                  Terms of use
+                </a>{" "}
+                and{" "}
+                <a href="/" className="underline">
+                  Privacy Policy
+                </a>
+                .
+              </label>
             </div>
-            <div className="d-grid gap-2 col-12 mx-auto">
-              <button type="submit" className="btn btn-secondary">
+
+            <div className="w-full">
+              <button
+                type="submit"
+                className="w-full py-2 px-4 bg-white text-black border-1 border-black rounded-4xl hover:bg-black hover:text-white hover:cursor-pointer active:bg-black active:text-white transition duration-200"
+              >
                 Log in
               </button>
             </div>
 
-            <div className="col-12 text-center">
+            <div className="text-center">
               <Link
-                to={"/forgot-password"}
-                className="text-decoration-underline text-dark"
+                to="/forgot-password"
+                className="hover:underline active:underline text-sm text-black"
               >
                 Forgot Password?
               </Link>
             </div>
-            <small className="col-12 text-center">
+
+            <small className="text-xs md:text-sm lg:text-sm text-black text-center block">
               Don't have an account?{" "}
               <Link
-                to={"/signup"}
-                className="text-decoration-underline text-dark"
+                to="/signup"
+                className="hover:underline active:underline font-semibold text-black"
               >
                 Sign up
               </Link>

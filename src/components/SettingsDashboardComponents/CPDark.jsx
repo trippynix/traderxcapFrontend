@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { IoIosEyeOff } from "react-icons/io";
+import { IoIosEye } from "react-icons/io";
 import changePass from "../../assets/images/rotation-lockDark.svg";
 import Context from "../../context";
 import SummaryAPI from "../../common";
@@ -80,160 +82,101 @@ export default function PersonalInformation() {
   };
   return (
     <>
-      <div className="d-flex flex-row align-items-center mt-3 ms-4 mb-0 border-bottom-section border-light text-white">
-        <img
-          src={changePass}
-          className="icons"
-          alt="profileLogo"
-          style={{ marginRight: "7px" }}
-        />
+      <div className="flex flex-row items-center mt-3 ms-4 mb-0 border-b border-gray-300 text-white">
+        <img src={changePass} alt="profileLogo" className="w-5 h-5 mr-2" />
         <small className="mb-0">Change Password</small>
       </div>
-      <div className="d-flex justify-content-around align-items-center text-white">
-        <div className="d-flex w-50 flex-column">
-          <div className="d-flex flex-row mt-3 justify-content-between">
+
+      <div className="flex justify-around items-center text-white">
+        <div className="flex w-1/2 flex-col">
+          {/* Old Password */}
+          <div className="flex flex-row mt-3 justify-between">
             <div className="me-5 mt-4">
               <small>Old Password :</small>
             </div>
-            <div className="d-flex input-group w-50 my-3 position-relative">
+            <div className="relative w-1/2 my-3">
               <input
                 type={oldPasswordType}
-                className="inputPass form-control border border-dark rounded"
+                className="form-input w-full border border-gray-700 rounded px-3 py-2 bg-white text-black"
                 name="oldPassword"
                 value={changePassword.oldPassword}
                 onChange={handlePasswordChange}
               />
               <span
-                onMouseEnter={() => setIsOldPassHovered(true)} // Set hover state to true
-                onMouseLeave={() => setIsOldPassHovered(false)} // Set hover state to false
+                onMouseEnter={() => setIsOldPassHovered(true)}
+                onMouseLeave={() => setIsOldPassHovered(false)}
                 style={{
-                  color: isOldPassHovered ? "black" : "#666666", // Ensures the label is black by default
+                  color: isOldPassHovered ? "black" : "#666666",
                 }}
-                className="d-flex position-absolute p-3 m-0 btn btn-link top-50 translate-middle-y end-0"
+                className="absolute top-1/2 right-0 -translate-y-1/2 p-3 cursor-pointer"
                 onClick={handleOldPassToggle}
               >
                 {showOldPass ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-eye-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
-                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
-                  </svg>
+                  <IoIosEye className="w-5 h-5" />
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-eye-slash-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
-                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
-                  </svg>
+                  <IoIosEyeOff className="w-5 h-5" />
                 )}
               </span>
             </div>
           </div>
-          <div className="d-flex flex-row mt-3 justify-content-between">
+
+          {/* New Password */}
+          <div className="flex flex-row mt-3 justify-between">
             <div className="me-5 mt-4">
               <small>New Password :</small>
             </div>
-            <div className="input-group w-50 my-3 position-relative">
+            <div className="relative w-1/2 my-3">
               <input
                 type={newPasswordType}
-                className="inputPass form-control border border-dark input-width rounded"
+                className="form-input w-full border border-gray-700 rounded px-3 py-2 bg-white text-black"
                 name="newPassword"
                 value={changePassword.newPassword}
                 onChange={handlePasswordChange}
               />
               <span
-                onMouseEnter={() => setisNewPassHovered(true)} // Set hover state to true
-                onMouseLeave={() => setisNewPassHovered(false)} // Set hover state to false
+                onMouseEnter={() => setisNewPassHovered(true)}
+                onMouseLeave={() => setisNewPassHovered(false)}
                 style={{
-                  color: isNewPassHovered ? "black" : "#666666", // Ensures the label is black by default
+                  color: isNewPassHovered ? "black" : "#666666",
                 }}
-                className="d-flex position-absolute p-3 m-0 btn btn-link top-50 translate-middle-y end-0"
+                className="absolute top-1/2 right-0 -translate-y-1/2 p-3 cursor-pointer"
                 onClick={handleNewPassToggle}
               >
                 {showNewPass ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-eye-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
-                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
-                  </svg>
+                  <IoIosEye className="w-5 h-5" />
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-eye-slash-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
-                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
-                  </svg>
+                  <IoIosEyeOff className="w-5 h-5" />
                 )}
               </span>
             </div>
           </div>
-          <div className="d-flex flex-row mt-3 justify-content-between">
-            <div className="me-3 mt-4">
+
+          {/* Confirm Password */}
+          <div className="flex flex-row mt-3 justify-between">
+            <div className="me-5 mt-4">
               <small>Confirm New Password :</small>
             </div>
-            <div className="input-group w-50 my-3 position-relative">
+            <div className="relative w-1/2 my-3">
               <input
                 type={confirmPasswordType}
-                className="inputPass form-control border border-dark input-width rounded"
+                className="form-input w-full border border-gray-700 rounded px-3 py-2 bg-white text-black"
                 name="confirmPass"
                 value={changePassword.confirmPass}
                 onChange={handlePasswordChange}
               />
               <span
-                onMouseEnter={() => setisConfirmPassHovered(true)} // Set hover state to true
-                onMouseLeave={() => setisConfirmPassHovered(false)} // Set hover state to false
+                onMouseEnter={() => setisConfirmPassHovered(true)}
+                onMouseLeave={() => setisConfirmPassHovered(false)}
                 style={{
-                  color: isConfirmPassHovered ? "black" : "#666666", // Ensures the label is black by default
+                  color: isConfirmPassHovered ? "black" : "#666666",
                 }}
-                className="d-flex position-absolute p-3 m-0 btn btn-link top-50 translate-middle-y end-0"
+                className="absolute top-1/2 right-0 -translate-y-1/2 p-3 cursor-pointer"
                 onClick={handleConfirmPassToggle}
               >
                 {showConfirmPass ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-eye-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
-                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
-                  </svg>
+                  <IoIosEye className="w-5 h-5" />
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-eye-slash-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
-                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
-                  </svg>
+                  <IoIosEyeOff className="w-5 h-5" />
                 )}
               </span>
             </div>
@@ -243,7 +186,7 @@ export default function PersonalInformation() {
 
       <button
         type="button"
-        className="mx-auto btn save mt-4"
+        className="mx-auto mt-4 px-6 py-2 border border-white rounded-lg bg-black text-white hover:bg-white hover:text-black hover:cursor-pointer font-medium rounded"
         onClick={handlePasswordSave}
       >
         Save

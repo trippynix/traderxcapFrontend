@@ -1,1 +1,20 @@
+@import "tailwindcss";
+/* PhoneInput custom dropdown styles */
+.phone-dropdown-dark {
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid white !important;
+}
+/* Target each country option */
+.phone-dropdown-dark .country {
+  background-color: black !important;
+  color: white !important;
+  padding: 8px 12px;
+}
 
+/* Hover effect */
+.phone-dropdown-dark .country:hover {
+  background-color: white !important;
+  color: black !important;
+  cursor: pointer;
+}

@@ -45,46 +45,26 @@ const OIPieChart = () => {
   const handleMouseEnter = (entry) => setHoveredData(entry);
   const handleMouseLeave = () => setHoveredData(null);
   return (
-    <div className="d-flex flex-row bg-dark border border-secondary rounded">
-      <div className="d-flex flex-column align-items-center justify-content-center text-white w-50">
-        <h2 className="my-3">P/C Ratio</h2>
-        <h4 className="d-flex gap-1 mt-3 mb-0">
-          <span
-            style={{
-              width: "25px",
-              height: "25px",
-              backgroundColor: "#64CE6B",
-              display: "inline-block",
-            }}
-          ></span>
-          Total <span style={{ color: "#64CE6B" }}>PE</span> OI:{" "}
+    <div className="flex flex-row bg-[#212429] border border-gray-600 rounded">
+      <div className="flex flex-col items-center justify-center text-white w-1/2">
+        <h2 className="my-6 text-4xl">P/C Ratio</h2>
+        <h4 className="flex gap-1 mt-3 mb-0 text-2xl">
+          <span className="w-7 h-7 bg-[#64CE6B] inline-block"></span>
+          Total <span className="text-[#64CE6B]">PE</span> OI:{" "}
         </h4>
-        <h4
-          className="rounded-3"
-          style={{ backgroundColor: "#4c4c84", padding: 7 }}
-        >
+        <h4 className="rounded-lg bg-[#4C4C84] p-2 text-2xl">
           {data[1].value}
         </h4>
-        <h4 className="d-flex gap-1 mt-3 mb-0">
-          <span
-            style={{
-              width: "25px",
-              height: "25px",
-              backgroundColor: "#E96667",
-              display: "inline-block",
-            }}
-          ></span>
-          Total <span style={{ color: "#E96667" }}>CE</span> OI:
+        <h4 className="flex gap-1 mt-3 mb-0 text-2xl">
+          <span className="w-7 h-7 bg-[#E96667] inline-block"></span>
+          Total <span className="text-[#E96667]">CE</span> OI:
         </h4>
-        <h4
-          className="rounded-3"
-          style={{ backgroundColor: "#4c4c84", padding: 7 }}
-        >
+        <h4 className="rounded-lg bg-[#4C4C84] p-2 text-2xl">
           {data[0].value}
         </h4>
-        <h4 className="my-3">PCR: {pcr}</h4>
+        <h4 className="my-6 text-2xl font-semibold">PCR: {pcr}</h4>
       </div>
-      <div className="w-50" style={{ position: "relative" }}>
+      <div className="w-1/2 relative">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -93,10 +73,10 @@ const OIPieChart = () => {
               nameKey="name"
               cx="50%"
               cy="50%"
-              innerRadius={80} // Creates the hollow effect
-              outerRadius={120} // Controls thickness
-              label={renderCustomizedLabel} // Uses custom label function
-              labelLine={false} // Removes label lines
+              innerRadius={80}
+              outerRadius={120}
+              label={renderCustomizedLabel}
+              labelLine={false}
               stroke="black"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}

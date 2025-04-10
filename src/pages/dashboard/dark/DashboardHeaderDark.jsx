@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "../../../store/userSlice";
@@ -7,9 +7,9 @@ import SummaryAPI from "../../../common";
 import { Link } from "react-router-dom";
 import useTheme from "../../../context/ThemeContext";
 import { Moon, Sun } from "lucide-react";
-import "../../../styles/DashboardHeader.css";
 
 export default function DashboardHeaderDark({ title, subTitle }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { themeMode, darkTheme, lightTheme } = useTheme();
 
   const handleThemeMode = (value) => {
@@ -39,16 +39,14 @@ export default function DashboardHeaderDark({ title, subTitle }) {
     }
   };
   return (
-    <div
-      className="d-flex flex-row justify-content-between mt-3"
-      style={{ backgroundColor: "#000000" }}
-    >
+    <div className="flex flex-row justify-between items-center mt-3 bg-black px-4 py-2">
+      {/* Theme Toggle Button */}
       <div>
         <button
           onClick={() =>
             handleThemeMode(themeMode === "dark" ? "light" : "dark")
           }
-          className="theme-toggle-btn"
+          className="p-2 rounded focus:outline-none hover:cursor-pointer"
           aria-label="Toggle Dark Mode"
         >
           {themeMode === "dark" ? (
@@ -58,35 +56,49 @@ export default function DashboardHeaderDark({ title, subTitle }) {
           )}
         </button>
       </div>
-      <div className="text-center mb-2 text-white">
-        <p className="mb-0">{title}</p>
-        <small>{subTitle}</small>
+
+      {/* Title and Subtitle */}
+      <div className="text-center text-white">
+        <p className="mb-0 text-base font-semibold">{title}</p>
+        <small className="text-sm">{subTitle}</small>
       </div>
-      <div>
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-secondary btn-sm dropdown-toggle py-0 border border-light text-white profileDark"
-            style={{ backgroundColor: "#000000" }}
-            data-bs-toggle="dropdown"
-            data-bs-display="static"
-            aria-expanded="false"
+
+      {/* User Dropdown */}
+      <div className="relative">
+        <button
+          type="button"
+          className="bg-black border border-white rounded-full text-white text-sm p-3 rounded flex items-center hover:cursor-pointer hover:bg-white hover:text-black"
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+        >
+          {user?.username}
+          <svg
+            className="ml-1 w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            {user?.username}
-          </button>
-          <ul className="dropdown-menu dropdown-menu-lg-end">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+
+        {dropdownOpen && (
+          <ul className="absolute right-0 mt-2 w-32 bg-white shadow-md rounded-md z-50">
             <li>
               <Link
-                to={"/login"}
+                to="/login"
                 onClick={handleLogout}
-                className="dropdown-item"
-                type="button"
+                className="block px-4 py-2 text-sm text-black hover:bg-black hover:text-white border border-white rounded-md"
               >
                 Log Out
               </Link>
             </li>
           </ul>
-        </div>
+        )}
       </div>
     </div>
   );

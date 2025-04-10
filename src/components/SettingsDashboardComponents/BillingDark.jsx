@@ -1,25 +1,20 @@
 import React from "react";
 import billingLogo from "../../assets/images/billDark.svg";
 import visaLogo from "../../assets/images/visa.svg";
-import plusSign from "../../assets/images/addDark.svg";
-import "../../styles/Billing.css";
+import { FaPlus } from "react-icons/fa6";
 
 export default function PersonalInformation() {
   return (
     <>
-      <div className="d-flex flex-row align-items-center mt-3 ms-4 mb-0 border-bottom-section border-light">
-        <img
-          src={billingLogo}
-          className="icons"
-          alt="billingLogo"
-          style={{ marginRight: "7px" }}
-        />
-        <small className="mb-0 text-white">Billing</small>
+      <div className="flex flex-row items-center mt-3 ms-4 mb-0 border-b border-gray-400 ">
+        <img src={billingLogo} className="w-5 h-5 mr-2" alt="billingLogo" />
+        <small className="text-white">Billing</small>
       </div>
-      <div className="d-flex justify-content-around mt-3">
+
+      <div className="flex justify-around my-10">
         <a
           href="#"
-          className="mx-5 mt-2 card align-items-center justify-content-center h-75 w-50 text-decoration-none text-white bg-dark border border-light"
+          className="mx-5 mt-2 flex flex-col items-center justify-center h-full w-1/2 no-underline text-white bg-black border border-white rounded shadow hover:bg-white hover:text-black"
         >
           <img src={visaLogo} className="mb-1" alt="visaLogo" />
           <p className="mb-1">4884-8545-7654-4581</p>
@@ -27,65 +22,67 @@ export default function PersonalInformation() {
         </a>
         <a
           href="#"
-          className="mx-5 mt-2 card align-items-center justify-content-center h-75 w-50 text-decoration-none border border-light bg-dark text-white"
+          className="mx-5 mt-2 flex flex-col items-center justify-center h-full w-1/2 no-underline text-white bg-black border border-white rounded shadow hover:bg-white hover:text-black hover:"
         >
-          <img src={plusSign} className="icons mb-2" alt="plusSign" />
+          <FaPlus />
           <p>Link a new card</p>
         </a>
       </div>
-      <div className="d-flex justify-content-between mt-3 text-white">
-        <div className="mx-5 mt-2 w-50 ">
-          <p className="fw-bold text-align-start">Active Subscription</p>
-          <div className="d-flex flex-row">
-            <div className="details d-flex flex-column">
-              <p className="subTitle mb-0">Account Name</p>
-              <p className="subTitle">Ayush26</p>
+
+      <div className="flex justify-between my-10 text-white">
+        <div className="mx-5 mt-2 w-1/2">
+          <p className="font-bold text-left mb-5">Active Subscription</p>
+          <div className="flex flex-row gap-x-40">
+            <div className="flex flex-col">
+              <p className="text-sm mb-2">Account Name:</p>
+              <p className="text-sm font-semibold">Ayush26</p>
             </div>
-            <div className="details d-flex flex-column">
-              <p className="subTitle mb-0">Subscription Type</p>
-              <p className="subTitle">Pro</p>
+            <div className="flex flex-col">
+              <p className="text-sm mb-2">Subscription Type:</p>
+              <p className="text-sm font-semibold">Pro</p>
             </div>
-            <div className="details d-flex flex-column">
-              <p className="subTitle mb-0">Payment Amount</p>
-              <p className="subTitle">$23</p>
+            <div className="flex flex-col">
+              <p className="text-sm mb-2">Payment Amount:</p>
+              <p className="text-sm font-semibold">$23</p>
             </div>
-            <div className="details d-flex flex-column">
-              <p className="subTitle mb-0">Payment Method</p>
-              <p className="subTitle">Visa*4581</p>
+            <div className="flex flex-col">
+              <p className="text-sm mb-2">Payment Method:</p>
+              <p className="text-sm font-semibold">Visa*4581</p>
             </div>
-            <div className="details d-flex flex-column">
-              <p className="subTitle mb-0">Payment Status</p>
-              <p className="subTitle">PAID</p>
+            <div className="flex flex-col">
+              <p className="text-sm mb-2">Payment Status:</p>
+              <p className="text-sm font-semibold">PAID</p>
             </div>
-            <div className="details d-flex flex-column">
-              <p className="subTitle mb-0">Rebill Date</p>
-              <p className="subTitle">01/05/2025</p>
+            <div className="flex flex-col">
+              <p className="text-sm mb-2">Rebill Date:</p>
+              <p className="text-sm font-semibold">01/05/2025</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="mx-5 my-5 w-50 text-white">
-        <p className="fw-bold text-align-start">Payment History</p>
-        <div className="d-flex flex-row">
-          <div className="details d-flex flex-column">
-            <p className="subTitle mb-0">Transaction Date</p>
-            <p className="subTitle">12/05/2024</p>
+
+      <div className="mx-5 mt-5 mb-25 w-1/2 text-white">
+        <p className="font-bold text-left mb-5">Payment History</p>
+        <div className="flex flex-row gap-x-40">
+          <div className="flex flex-col">
+            <p className="text-sm mb-2">Transaction Date:</p>
+            <p className="text-sm font-semibold">12/05/2024</p>
           </div>
-          <div className="details d-flex flex-column">
-            <p className="subTitle mb-0">Subscription Type</p>
-            <p className="subTitle">Pro</p>
+          <div className="flex flex-col">
+            <p className="text-sm mb-2">Subscription Type:</p>
+            <p className="text-sm font-semibold">Pro</p>
           </div>
-          <div className="details d-flex flex-column">
-            <p className="subTitle mb-0">Payment Amount</p>
-            <p className="subTitle">$23</p>
+          <div className="flex flex-col">
+            <p className="text-sm mb-2">Payment Amount:</p>
+            <p className="text-sm font-semibold">$23</p>
           </div>
-          <div className="details d-flex flex-column">
-            <p className="subTitle mb-0">Payment Method</p>
-            <p className="subTitle">Visa*4581</p>
+          <div className="flex flex-col">
+            <p className="text-sm mb-2">Payment Method:</p>
+            <p className="text-sm font-semibold">Visa*4581</p>
           </div>
-          <div className="details d-flex flex-column">
-            <p className="subTitle mb-0">Payment Status</p>
-            <p className="subTitle">PAID</p>
+          <div className="flex flex-col">
+            <p className="text-sm mb-2">Payment Status:</p>
+            <p className="text-sm font-semibold">PAID</p>
           </div>
         </div>
       </div>

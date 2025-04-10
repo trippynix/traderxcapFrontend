@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import SummaryAPI from "../common";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";

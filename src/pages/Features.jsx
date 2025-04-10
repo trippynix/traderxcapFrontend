@@ -9,7 +9,6 @@ import financialProfit from "../assets/images/dashboard/black/financial-profit.s
 import marketReasearch from "../assets/images/dashboard/black/market-research.svg";
 import profitGrowth from "../assets/images/dashboard/black/profit-growth.svg";
 import sample from "../assets/images/featuresSS/sample.png";
-import "../styles/Features.css";
 import greenTick from "../assets/images/featuresSS/greenTick.svg";
 
 export default function Features() {

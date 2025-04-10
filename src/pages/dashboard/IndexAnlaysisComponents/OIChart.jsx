@@ -175,56 +175,61 @@ const CustomTooltip = ({ active, payload }) => {
 
 const OIChart = () => {
   return (
-    <ResponsiveContainer
-      className="bg-dark border border-secondary rounded"
-      width="100%"
-      height={400}
-    >
-      <BarChart
-        data={data}
-        margin={{ top: 40, right: 30, left: 20, bottom: 5 }}
+    <div className="h-[60vh] w-full">
+      <ResponsiveContainer
+        width="100%"
+        height="100%"
+        className="bg-[#212429] border border-gray-600 rounded"
       >
-        <CartesianGrid stroke="rgba(255, 255, 255, 0.2)" strokeDasharray="0" />
-        <XAxis
-          dataKey="strike"
-          stroke="rgba(255, 255, 255, 0.2)"
-          tick={{ fontSize: 12, fill: "white" }}
-        />
-        <YAxis
-          stroke="rgba(255, 255, 255, 0.2)"
-          tick={{ fontSize: 12, fill: "white" }}
-        />
-        <Tooltip
-          content={<CustomTooltip />}
-          cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
-        />
-        <Legend
-          formatter={(value, entry) => {
-            return (
-              <span style={{ color: "white" }}>
-                {value === "callOI" ? "Call OI" : "Put OI"}
-              </span>
-            );
-          }}
-        />
+        <BarChart
+          data={data}
+          margin={{ top: 40, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid
+            stroke="rgba(255, 255, 255, 0.2)"
+            strokeDasharray="0"
+          />
+          <XAxis
+            dataKey="strike"
+            stroke="rgba(255, 255, 255, 0.2)"
+            tick={{ fontSize: 12, fill: "white" }}
+          />
+          <YAxis
+            stroke="rgba(255, 255, 255, 0.2)"
+            tick={{ fontSize: 12, fill: "white" }}
+          />
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
+          />
+          <Legend
+            formatter={(value, entry) => {
+              return (
+                <span style={{ color: "white" }}>
+                  {value === "callOI" ? "Call OI" : "Put OI"}
+                </span>
+              );
+            }}
+          />
 
-        {/* Call OI Bars */}
-        <Bar
-          dataKey="callOI"
-          barSize={20}
-          fill="#E96667"
-          shape={(props) => renderCustomBar(props, "call")}
-        />
+          {/* Call OI Bars */}
+          <Bar
+            dataKey="callOI"
+            barSize={20}
+            fill="#E96667"
+            shape={(props) => renderCustomBar(props, "call")}
+          />
 
-        {/* Put OI Bars */}
-        <Bar
-          dataKey="putOI"
-          barSize={20}
-          fill="#64CE6B"
-          shape={(props) => renderCustomBar(props, "put")}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+          {/* Put OI Bars */}
+          <Bar
+            dataKey="putOI"
+            barSize={20}
+            fill="#64CE6B"
+            shape={(props) => renderCustomBar(props, "put")}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

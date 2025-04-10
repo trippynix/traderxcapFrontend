@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 // Export the hook as a named export
 export const UseOtpModal = (onVerify, options = {}) => {

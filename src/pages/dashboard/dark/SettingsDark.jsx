@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../../../styles/Settings.css";
 import SideBar from "../../../components/SideBar";
 import PersonalInformation from "../../../components/SettingsDashboardComponents/PersonalInformation";
 import Billing from "../../../components/SettingsDashboardComponents/Billing";
@@ -23,60 +22,54 @@ export default function SettingsDark() {
 
   return (
     <>
-      <div className="d-flex flex-row">
+      <div className="flex flex-row">
         <SideBar tab={"Settings"} />
-        <div
-          className="container-fluid d-flex flex-column"
-          style={{ backgroundColor: "#000000" }}
-        >
+
+        <div className="flex flex-col w-full bg-black">
           <DashboardHeaderDark
             title={"Settings"}
             subTitle={"Edit and manage your personal and account settings here"}
           />
-          <div
-            className="d-flex flex-row mt-4 px-2 border border-2 border-dark"
-            style={{ backgroundColor: "#000000" }}
-          >
-            <ul className="nav" style={{ backgroundColor: "#000000" }}>
-              <li className="nav-item px-5">
+
+          <div className="flex flex-row mt-4 px-2 border-2 border-black bg-black">
+            <ul className="flex flex-row bg-black">
+              <li className="p-5">
                 <a
-                  className={`nav-link ${
+                  className={`cursor-pointer text-white hover:border-b-2 ${
                     selectedTab === "Personal Information"
-                      ? "text-light border-bottom"
-                      : "text-light"
+                      ? "border-b-2 border-white"
+                      : ""
                   }`}
                   onClick={(e) => {
-                    e.preventDefault(); // Prevents the browser from following the link
+                    e.preventDefault();
                     setSelectedTab("Personal Information");
                   }}
                 >
                   Personal Information
                 </a>
               </li>
-              <li className="nav-item px-5">
+              <li className="p-5">
                 <a
-                  className={`nav-link ${
-                    selectedTab === "Billing"
-                      ? "text-light border-bottom"
-                      : "text-light"
+                  className={`cursor-pointer text-white hover:border-b-2 ${
+                    selectedTab === "Billing" ? "border-b-2 border-white" : ""
                   }`}
                   onClick={(e) => {
-                    e.preventDefault(); // Prevents the browser from following the link
+                    e.preventDefault();
                     setSelectedTab("Billing");
                   }}
                 >
                   Billing
                 </a>
               </li>
-              <li className="nav-item px-5">
+              <li className="p-5">
                 <a
-                  className={`nav-link ${
+                  className={`cursor-pointer text-white hover:border-b-2 ${
                     selectedTab === "Change Password"
-                      ? "text-light border-bottom"
-                      : "text-light"
+                      ? "border-b-2 border-white"
+                      : ""
                   }`}
                   onClick={(e) => {
-                    e.preventDefault(); // Prevents the browser from following the link
+                    e.preventDefault();
                     setSelectedTab("Change Password");
                   }}
                 >
@@ -85,6 +78,7 @@ export default function SettingsDark() {
               </li>
             </ul>
           </div>
+
           {selectedTab === "Personal Information" && <PersonalInformation />}
           {selectedTab === "Billing" && <Billing />}
           {selectedTab === "Change Password" && <ChangePassword />}
