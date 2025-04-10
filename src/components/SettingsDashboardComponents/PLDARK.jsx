@@ -211,7 +211,7 @@ const PLDARK = () => {
             <div className="my-1 md:my-2 lg:my-3 w-3/4 relative">
               <button
                 type="button"
-                className={`w-full py-1 px-2 text-left text-xs md:text-sm lg:text-base bg-black text-white border border-white rounded-md ${
+                className={`w-full py-1 px-2 text-left text-xs md:text-sm lg:text-base bg-zinc-900 text-white border border-white rounded-md ${
                   isEditing ? "hover:cursor-pointer" : "cursor-not-allowed"
                 }`}
                 disabled={!isEditing}
@@ -383,7 +383,7 @@ const PLDARK = () => {
             <div className="my-1 md:my-2 lg:my-3 w-3/4 relative">
               <button
                 type="button"
-                className={`w-full py-1 text-xs md:text-sm lg:text-base px-2 text-left bg-black text-white border border-white rounded-md ${
+                className={`w-full py-1 text-xs md:text-sm lg:text-base px-2 text-left bg-zinc-900 text-white border border-white rounded-md ${
                   isEditing ? "hover:cursor-pointer" : "cursor-not-allowed"
                 }`}
                 disabled={!isEditing}
