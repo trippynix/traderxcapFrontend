@@ -61,17 +61,19 @@ export default function MomentumSpikeLight() {
   }, []);
 
   return (
-    <div className="d-flex flex-row">
+    <div className="flex flex-row">
       <Sidebar tab={"Momentum Spike"} />
-      <div className="container-fluid d-flex flex-column bg-light">
+      <div className="flex flex-col w-full bg-white">
         <DashboardHeaderLight
           title={"Momentum Spike"}
           subTitle={"asdasdasdas"}
         />
-        <hr style={{ color: "black", backgroundColor: "black" }} />
-        <div className="container mt-4 p-3">
+        <hr className="border-black" />
+        <div className="container mx-auto mt-4 p-3">
           {/*----------------------------------------- 5 min Momentum */}
-          <h4 className="text-center mb-3 text-dark">5 min Momentum Spike</h4>
+          <h4 className="text-center text-xs md:text-sm lg:text-base mb-3 text-black">
+            5 min Momentum Spike
+          </h4>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={data}>
               <XAxis
@@ -97,7 +99,9 @@ export default function MomentumSpikeLight() {
             </BarChart>
           </ResponsiveContainer>
           {/*----------------------------------------- 15 min Momentum */}
-          <h4 className="text-center mb-3 text-dark">15 min Momentum Spike</h4>
+          <h4 className="text-center text-xs md:text-sm lg:text-base mb-3 text-black">
+            15 min Momentum Spike
+          </h4>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={data}>
               <XAxis
@@ -123,37 +127,53 @@ export default function MomentumSpikeLight() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="d-flex flex-row justify-content-around">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Technology Services</p>
+        <div className="flex flex-col md:flex-row justify-around px-4">
+          <div className="flex flex-col w-full md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Technology Services
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-black text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Electronic Technology</p>
+          <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Electronic Technology
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-black text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
         </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Finance</p>
+        <div className="flex flex-col md:flex-row justify-around my-4 md:my-5 lg:my-5 px-4">
+          <div className="flex flex-col w-full md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Finance
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-black text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Health Technology</p>
+          <div className="flex flex-col w-full md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Health Technology
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-black text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}

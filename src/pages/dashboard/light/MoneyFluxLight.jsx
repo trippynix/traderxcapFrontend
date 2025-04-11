@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../../../components/useAuthCheck";
 import DashboardHeaderLight from "./DashboardHeaderLight";
 import SortableTableLight from "../sortTableComponent/SortableTableLight";
+import { Treemap, ResponsiveContainer, Tooltip, Cell } from "recharts";
 
 export default function MoneyFluxLight() {
   const navigate = useNavigate();
@@ -50,154 +51,247 @@ export default function MoneyFluxLight() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  // Calculate % open change
+  const formattedData = data.map((stock) => {
+    const percentChange =
+      ((stock.open - stock.previousClose) / stock.previousClose) * 100;
+    return {
+      name: stock.symbol,
+      size: Math.abs(percentChange), // Block size
+      value: percentChange, // Color indicator
+    };
+  });
+
+  // Color function
+  const getColor = (value) => (value >= 0 ? "#4caf50" : "#f44336"); // Green for positive, red for negative
+
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-2.5 border border-gray-300 rounded shadow">
+          <p>
+            <strong>{payload[0].payload.name}</strong>
+          </p>
+          <p>% Open Change: {payload[0].payload.value.toFixed(2)}%</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
-    <div className="d-flex flex-row">
+    <div className="flex flex-row">
       <Sidebar tab={"Money Flux"} />
-      <div className="container-fluid d-flex flex-column bg-light">
+      <div className="flex flex-col w-full bg-white">
         <DashboardHeaderLight
           title={"Momentum Spike"}
           subTitle={"asdasdasdas"}
         />
         <hr style={{ color: "black", backgroundColor: "black" }} />
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Retail Trade</p>
+
+        {/* <ResponsiveContainer width="100%" height={400}>
+          <Treemap data={formattedData} dataKey="size" stroke="#fff">
+            {formattedData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={getColor(entry.value)} />
+            ))}
+          </Treemap>
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={{ fill: "rgba(0, 0, 0, 0.1)" }}
+          />
+        </ResponsiveContainer> */}
+
+        {/* Block 1 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Technology Services
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Consumer Non-Durables</p>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Finance Sector
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-        </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Energy Minerals</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Consumer Services</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-        </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Producer Manufacturing</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Commercial Services</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
         </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Producer Manufacturing</p>
+
+        {/* Block 2 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Energy Sector
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Commercial Services</p>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Healthcare
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-        </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Consumer Durables</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Utilities</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
         </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Transportation</p>
+
+        {/* Block 3 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Consumer Goods
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Non-Energy Minerals</p>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Utilities
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-        </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Industrial Services</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Process Industries</p>
-            {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
         </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Communications</p>
+
+        {/* Block 4 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Industrials
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Health Services</p>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Real Estate
+            </p>
             {dataLoading ? (
-              <p className="text-light">Loading data...</p>
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+
+        {/* Block 5 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Communication Services
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Materials
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+
+        {/* Block 6 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Transportation
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Tech Hardware
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+
+        {/* Block 7 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Financial Tech
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Insurance
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}

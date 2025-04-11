@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import "./SliderDark.css";
 
 const generateTimeMarks = () => {
   const startMinutes = 9 * 60 + 15; // 9:15 AM in minutes
@@ -80,26 +79,29 @@ export default function SliderDark() {
 
   console.log(values.map(convertToTime));
   return (
-    <div className="d-flex flex-column align-items-center">
-      <Box
-        sx={{
-          width: "100%",
-        }}
-      >
+    <div className="flex flex-col items-center w-full">
+      <Box sx={{ width: "100%" }}>
         <Slider
-          className="text-white"
           value={values}
+          onChange={handleChange}
+          min={0}
+          max={100}
+          step={1.333333333}
+          marks={timeMarks}
+          disableSwap
+          valueLabelDisplay="auto"
+          valueLabelFormat={(value) => convertToTime(value)}
           sx={{
             height: 10,
             "& .MuiSlider-thumb": {
-              width: 40, // Increase thumb width to look like a switch
-              height: 20, // Height to make it rectangular
-              borderRadius: 10, // Rounded edges like a switch
+              width: 40,
+              height: 20,
+              borderRadius: 10,
               backgroundColor: "white",
-              border: "2px solid #4c4c84", // Blue border for switch-like look
+              border: "2px solid #4c4c84",
               transition: "0.3s",
               "&:hover": {
-                backgroundColor: "#4c4c84", // Blue background on hover
+                backgroundColor: "#4c4c84",
                 borderColor: "#4c4c84",
               },
               "&.Mui-focusVisible": {
@@ -107,32 +109,29 @@ export default function SliderDark() {
               },
             },
             "& .MuiSlider-rail": {
-              backgroundColor: "#4c4c84", // Light grey rail
+              backgroundColor: "#4c4c84",
             },
             "& .MuiSlider-track": {
-              backgroundColor: "#4c4c84", // Blue track
+              backgroundColor: "#4c4c84",
             },
             "& .MuiSlider-markLabel": {
-              color: "white", // Change label color
+              color: "white",
               fontWeight: "bold",
-              fontSize: "14px",
+              fontSize: {
+                xs: "6px", // <600px
+                sm: "10px", // 600-900px
+                md: "14px", // >900px
+              },
             },
           }}
-          onChange={handleChange}
-          min={0}
-          max={100}
-          step={1.333333333} // 5-minute steps
-          marks={timeMarks}
-          disableSwap
-          valueLabelDisplay="auto"
-          valueLabelFormat={(value) => convertToTime(value)}
         />
       </Box>
-      <div></div>
+
+      <div className="mt-0 md:mt-2 lg:mt-4" />
+
       <button
         type="button"
-        className="btn btn-secondary goButton py-0 border border-light text-white"
-        style={{ backgroundColor: "#000000", width: "25%" }}
+        className="bg-black text-white text-[10px] md:text-xs lg:text-base border border-white px-1 lg:px-6 py-1 lg:py-2 rounded-md hover:bg-[#4c4c84] hover:cursor-pointer active:bg-[#4c4c84] transition-all duration-300 w-1/4 text-center"
         onClick={sendDataToBackend}
       >
         GO

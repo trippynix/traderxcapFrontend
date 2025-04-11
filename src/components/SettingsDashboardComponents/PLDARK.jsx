@@ -173,7 +173,7 @@ const PLDARK = () => {
   return (
     <>
       <div className="bg-black ms-0">
-        <div className="flex flex-row items-center mt-3 ms-4 mb-0 border-b border-gray-400 ">
+        <div className="flex flex-row items-center mt-3 ms-4 mb-0 border-b border-gray-400">
           <img
             src={profileLogo}
             alt="profileLogo"

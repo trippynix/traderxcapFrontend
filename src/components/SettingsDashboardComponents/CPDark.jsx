@@ -82,17 +82,25 @@ export default function PersonalInformation() {
   };
   return (
     <>
-      <div className="flex flex-row items-center mt-3 ms-4 mb-0 border-b border-gray-300 text-white">
-        <img src={changePass} alt="profileLogo" className="w-5 h-5 mr-2" />
-        <small className="mb-0">Change Password</small>
+      <div className="flex flex-row items-center mt-3 ms-4 mb-0 border-b border-gray-400">
+        <img
+          src={changePass}
+          alt="profileLogo"
+          className="w-4 h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 md:mr-1 lg:mr-2"
+        />
+        <small className="text-white text-xs md:text-sm lg:text-base">
+          Change Password
+        </small>
       </div>
 
       <div className="flex justify-around items-center text-white">
-        <div className="flex w-1/2 flex-col">
+        <div className="flex flex-col w-full md:w-1/2 lg:w-1/2">
           {/* Old Password */}
-          <div className="flex flex-row mt-3 justify-between">
+          <div className="flex flex-col md:flex-row lg:flex-row mt-3 items-center md:justify-between lg:justify-between">
             <div className="me-5 mt-4">
-              <small>Old Password :</small>
+              <small className="text-[10px] md:text-xs lg:text-base">
+                Old Password :
+              </small>
             </div>
             <div className="relative w-1/2 my-3">
               <input
@@ -121,9 +129,11 @@ export default function PersonalInformation() {
           </div>
 
           {/* New Password */}
-          <div className="flex flex-row mt-3 justify-between">
+          <div className="flex flex-col md:flex-row lg:flex-row mt-3 items-center md:justify-between lg:justify-between">
             <div className="me-5 mt-4">
-              <small>New Password :</small>
+              <small className="text-[10px] md:text-xs lg:text-base">
+                New Password :
+              </small>
             </div>
             <div className="relative w-1/2 my-3">
               <input
@@ -152,9 +162,11 @@ export default function PersonalInformation() {
           </div>
 
           {/* Confirm Password */}
-          <div className="flex flex-row mt-3 justify-between">
+          <div className="flex flex-col md:flex-row lg:flex-row mt-3 items-center md:justify-between lg:justify-between">
             <div className="me-5 mt-4">
-              <small>Confirm New Password :</small>
+              <small className="text-[10px] md:text-xs lg:text-base">
+                Confirm New Password :
+              </small>
             </div>
             <div className="relative w-1/2 my-3">
               <input
@@ -186,7 +198,7 @@ export default function PersonalInformation() {
 
       <button
         type="button"
-        className="mx-auto mt-4 px-6 py-2 border border-white rounded-lg bg-black text-white hover:bg-white hover:text-black hover:cursor-pointer font-medium rounded"
+        className="mx-auto mt-4 px-4 py-2 text-xs md:text-sm lg:text-base border border-white rounded-lg bg-black text-white hover:bg-white hover:text-black hover:cursor-pointer active:bg-white active:text-black font-medium rounded"
         onClick={handlePasswordSave}
       >
         Save

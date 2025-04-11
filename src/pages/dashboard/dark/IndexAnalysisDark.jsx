@@ -175,15 +175,17 @@ export default function IndexAnalysisDark() {
             <h4 className="text-center my-10 text-xl font-semibold">
               Equity Options
             </h4>
-            <div className="flex flex-row justify-around bg-[#212429] border border-gray-600 p-4 rounded-md mx-4">
-              <div className="flex flex-col space-y-10">
+            <div className="flex flex-col md:flex-col lg:flex-row items-center lg:justify-around bg-[#212429] border border-gray-600 p-4 rounded-md mx-4">
+              <div className="flex flex-row md:flex-row lg:flex-col lg:space-y-10">
                 {/* Equity Dropdown */}
-                <div className="flex flex-row items-center space-x-4">
-                  <p className="mr-5">Equity:</p>
+                <div className="flex flex-row items-center mr-5">
+                  <p className="text-[10px] md:text-xs lg:text-base mr-1 md:mr-3 lg:mr-5">
+                    Equity:
+                  </p>
                   <div className="relative inline-block">
                     <button
                       onClick={toggleEquityDropdown}
-                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
+                      className="py-1 px-2 lg:px-3 border border-white text-[10px] md:text-xs lg:text-base text-white bg-black flex items-center rounded hover:cursor-pointer"
                     >
                       {selectedEquity} <IoIosArrowDown className="ml-2" />
                     </button>
@@ -195,7 +197,7 @@ export default function IndexAnalysisDark() {
                             <button
                               href="#"
                               onClick={() => handleEquitySelect(eq)}
-                              className="block px-4 py-2 font-bold hover:bg-gray-700"
+                              className="block px-4 py-2 text-[8px] md:text-[10px] lg:text-base font-bold hover:bg-gray-700 active:bg-gray-700"
                             >
                               {eq}
                             </button>
@@ -208,11 +210,13 @@ export default function IndexAnalysisDark() {
 
                 {/* Expiry Dropdown */}
                 <div className="flex flex-row items-center space-x-4">
-                  <p className="mr-5">Expiry:</p>
+                  <p className="text-[10px] md:text-xs lg:text-base mr-1 md:mr-3 lg:mr-5">
+                    Expiry:
+                  </p>
                   <div className="relative inline-block">
                     <button
                       onClick={toggleEquityExpiryDropdown}
-                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
+                      className="py-1 px-2 lg:px-3 border border-white text-[10px] md:text-xs lg:text-base text-white bg-black flex items-center rounded hover:cursor-pointer"
                     >
                       {selectedEquityExpiry} <IoIosArrowDown className="ml-2" />
                     </button>
@@ -223,7 +227,7 @@ export default function IndexAnalysisDark() {
                           <li key={i}>
                             <button
                               onClick={() => handleEquityExpirySelect(date)}
-                              className="w-full text-left px-4 py-2 font-bold hover:bg-gray-700 text-white"
+                              className="w-full text-left text-[8px] md:text-[10px] lg:text-base px-4 py-2 font-bold hover:bg-gray-700 text-white active:bg-gray-700"
                             >
                               {date}
                             </button>
@@ -236,7 +240,7 @@ export default function IndexAnalysisDark() {
               </div>
 
               {/* Slider */}
-              <div className="w-3/4">
+              <div className="w-7/8 lg:w-3/4">
                 <SliderDark />
               </div>
             </div>
@@ -264,15 +268,17 @@ export default function IndexAnalysisDark() {
             <h4 className="text-center my-10 text-xl font-semibold">
               ETFs Options
             </h4>
-            <div className="flex flex-row justify-around bg-[#212429] border border-gray-600 p-4 rounded-md mx-4">
-              <div className="flex flex-col space-y-10">
+            <div className="flex flex-col md:flex-col lg:flex-row items-center lg:justify-around bg-[#212429] border border-gray-600 p-4 rounded-md mx-4">
+              <div className="flex flex-row md:flex-row lg:flex-col lg:space-y-10">
                 {/* ETFs Dropdown */}
-                <div className="flex flex-row items-center space-x-4">
-                  <p className="mr-5">ETFs:</p>
+                <div className="flex flex-row items-center mr-5">
+                  <p className="text-[10px] md:text-xs lg:text-base mr-1 md:mr-3 lg:mr-5">
+                    ETFs:
+                  </p>
                   <div className="relative inline-block">
                     <button
                       onClick={toggleETFDropdown}
-                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
+                      className="py-1 px-2 lg:px-3 border border-white text-[10px] md:text-xs lg:text-base text-white bg-black flex items-center rounded hover:cursor-pointer"
                     >
                       {selectedETF} <IoIosArrowDown className="ml-2" />
                     </button>
@@ -284,7 +290,7 @@ export default function IndexAnalysisDark() {
                             <button
                               href="#"
                               onClick={() => handleETFSelect(eq)}
-                              className="block px-4 py-2 font-bold hover:bg-gray-700"
+                              className="block px-4 py-2 text-[8px] md:text-[10px] lg:text-base font-bold hover:bg-gray-700 active:bg-gray-700"
                             >
                               {eq}
                             </button>
@@ -297,11 +303,13 @@ export default function IndexAnalysisDark() {
 
                 {/* Expiry Dropdown */}
                 <div className="flex flex-row items-center space-x-4">
-                  <p className="mr-5">Expiry:</p>
+                  <p className="text-[10px] md:text-xs lg:text-base mr-1 md:mr-3 lg:mr-5">
+                    Expiry:
+                  </p>
                   <div className="relative inline-block">
                     <button
                       onClick={toggleETFExpiryDropdown}
-                      className="py-1 px-3 border border-white text-white bg-black flex items-center rounded hover:cursor-pointer"
+                      className="py-1 px-2 lg:px-3 border border-white text-[10px] md:text-xs lg:text-base text-white bg-black flex items-center rounded hover:cursor-pointer"
                     >
                       {selectedETFExpiry} <IoIosArrowDown className="ml-2" />
                     </button>
@@ -312,7 +320,7 @@ export default function IndexAnalysisDark() {
                           <li key={i}>
                             <button
                               onClick={() => handleETFExpirySelect(date)}
-                              className="w-full text-left px-4 py-2 font-bold hover:bg-gray-700 text-white"
+                              className="w-full text-left text-[8px] md:text-[10px] lg:text-base px-4 py-2 font-bold hover:bg-gray-700 text-white active:bg-gray-700"
                             >
                               {date}
                             </button>
@@ -325,7 +333,7 @@ export default function IndexAnalysisDark() {
               </div>
 
               {/* Slider */}
-              <div className="w-3/4">
+              <div className="w-7/8 lg:w-3/4">
                 <SliderDark />
               </div>
             </div>
