@@ -85,7 +85,7 @@ const Sidebar = ({ tab }) => {
               transition-all duration-300
               ${
                 selectedSideBarTab === link.name
-                  ? "underline font-bold text-black border-b-2"
+                  ? "font-bold text-black border-b-2"
                   : "text-black w-full"
               }
               hover:bg-[#575757]
@@ -105,7 +105,7 @@ const Sidebar = ({ tab }) => {
                 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300
                 ${
                   selectedSideBarTab === link.name
-                    ? "underline font-bold text-base text-black bg-opacity-20"
+                    ? "font-bold text-base text-black bg-opacity-20"
                     : "text-black w-full"
                 }
               `}

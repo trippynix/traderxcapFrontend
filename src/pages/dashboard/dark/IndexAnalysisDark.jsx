@@ -104,7 +104,7 @@ export default function IndexAnalysisDark() {
           <hr className="border-gray-600 my-5 mx-5" />
 
           {/* Top Dropdown Section */}
-          <div className="flex flex-row justify-around items-center mt-[12%] mb-[35%]">
+          <div className="flex flex-row justify-around items-center h-100">
             {/* Equity Options Button */}
             <div
               className="relative"
@@ -113,7 +113,7 @@ export default function IndexAnalysisDark() {
             >
               <button
                 type="button"
-                className="text-white text-[23px] hover:cursor-pointer"
+                className="text-white text-[15px] md:text-[23px] lg:text-[23px] hover:cursor-pointer"
                 onClick={() => handleScroll(equityOptionsRef)}
               >
                 Equity Options
@@ -145,7 +145,7 @@ export default function IndexAnalysisDark() {
             >
               <button
                 type="button"
-                className="text-white text-[23px] hover:cursor-pointer"
+                className="text-white text-[15px] md:text-[23px] lg:text-[23px] hover:cursor-pointer"
                 onClick={() => handleScroll(etfOptionsRef)}
               >
                 ETFs Options
