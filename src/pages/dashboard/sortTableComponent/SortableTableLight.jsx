@@ -62,7 +62,7 @@ const SortableTableLight = ({ data, columns }) => {
                   <span className="text-white font-medium">{row.symbol}</span>
                 </div>
               </td>
-              <td className="text-white">{row.name}</td>
+              <td className="text-black">{row.name}</td>
               <td>
                 <div className="p-0 border-2 border-black rounded-lg bg-[#01fd1f]">
                   <span className="text-white font-medium">{row.exchange}</span>

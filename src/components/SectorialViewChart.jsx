@@ -75,6 +75,35 @@ const useResponsiveFontSize = () => {
   return fontSize;
 };
 
+// CUSTOM TOOLTIP **************//
+// Custom Tooltip Component
+const CustomTooltip = ({ active, payload, label }) => {
+  if (!active || !payload || payload.length === 0) return null;
+
+  return (
+    <div
+      style={{
+        background: "#4c4c84",
+        padding: "10px",
+        borderRadius: "5px",
+        color: "#fff",
+        border: "1px solid #ccc",
+        display: "flex",
+        flexDirection: "column",
+        paddingBottom: "10px",
+      }}
+    >
+      <p className="font-bold">{label}</p>
+      {payload.map((entry, index) => (
+        <span className="font-bold" key={index}>
+          {entry.name}:{" "}
+          {entry.name === "change" ? `${entry.value}%` : entry.value}
+        </span>
+      ))}
+    </div>
+  );
+};
+
 const SectorialViewChart = ({ data }) => {
   const fontSize = useResponsiveFontSize();
   const barSize = useResponsiveBarSize();
@@ -106,7 +135,10 @@ const SectorialViewChart = ({ data }) => {
               tick={{ fontSize, fill: "white" }}
               stroke="rgba(255, 255, 255, 0.5)"
             />
-            <Tooltip />
+            <Tooltip
+              content={<CustomTooltip />}
+              cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
+            />
             <Bar dataKey="change" barSize={barSize} radius={[5, 5, 0, 0]}>
               {data.map((entry, index) => (
                 <Cell

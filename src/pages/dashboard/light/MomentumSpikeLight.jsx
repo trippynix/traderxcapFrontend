@@ -62,6 +62,34 @@ export default function MomentumSpikeLight() {
     fetchData();
   }, []);
 
+  // Custom Tooltip Component
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (!active || !payload || payload.length === 0) return null;
+
+    return (
+      <div
+        style={{
+          background: "#4c4c84",
+          padding: "10px",
+          borderRadius: "5px",
+          color: "#fff",
+          border: "1px solid #ccc",
+          display: "flex",
+          flexDirection: "column",
+          paddingBottom: "10px",
+        }}
+      >
+        <p>{label}</p>
+        {payload.map((entry, index) => (
+          <span key={index}>
+            {entry.name}:{" "}
+            {entry.name === "change" ? `${entry.value}%` : entry.value}
+          </span>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="flex flex-row">
       <Sidebar tab={"Momentum Spike"} />
@@ -87,10 +115,8 @@ export default function MomentumSpikeLight() {
               />
               <YAxis tick={{ fontSize: 12, fill: "#000000" }} />
               <Tooltip
-                formatter={(value, name, props) => [
-                  `${props.payload.change}%`,
-                  "% Change",
-                ]}
+                content={<CustomTooltip />}
+                cursor={{ fill: "rgba(45, 44, 44, 0.3)" }}
               />
               <Bar
                 dataKey="volume"
@@ -115,10 +141,8 @@ export default function MomentumSpikeLight() {
               />
               <YAxis tick={{ fontSize: 12, fill: "#000000" }} />
               <Tooltip
-                formatter={(value, name, props) => [
-                  `${props.payload.change}%`,
-                  "% Change",
-                ]}
+                content={<CustomTooltip />}
+                cursor={{ fill: "rgba(45, 44, 44, 0.3)" }}
               />
               <Bar
                 dataKey="volume"
@@ -129,10 +153,10 @@ export default function MomentumSpikeLight() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="flex flex-col md:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row justify-around px-4 mb-25">
           <div className="flex flex-col w-full md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
-              Technology Services
+              Near Previous Day's High
             </p>
             {dataLoading ? (
               <p className="text-black text-xs md:text-sm lg:text-base">
@@ -144,33 +168,7 @@ export default function MomentumSpikeLight() {
           </div>
           <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
-              Electronic Technology
-            </p>
-            {dataLoading ? (
-              <p className="text-black text-xs md:text-sm lg:text-base">
-                Loading data...
-              </p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row justify-around my-4 md:my-5 lg:my-5 px-4">
-          <div className="flex flex-col w-full md:w-[40%] my-4 md:my-0">
-            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
-              Finance
-            </p>
-            {dataLoading ? (
-              <p className="text-black text-xs md:text-sm lg:text-base">
-                Loading data...
-              </p>
-            ) : (
-              <SortableTableLight data={data} columns={columns} />
-            )}
-          </div>
-          <div className="flex flex-col w-full md:w-[40%] my-4 md:my-0">
-            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
-              Health Technology
+              Near Previous Day's Low
             </p>
             {dataLoading ? (
               <p className="text-black text-xs md:text-sm lg:text-base">

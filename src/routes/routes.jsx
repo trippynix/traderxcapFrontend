@@ -82,7 +82,7 @@ const router = createBrowserRouter([
         element: <SwingCenter />,
       },
       {
-        path: "market-depth",
+        path: "market-analysis",
         element: <MarketDepth />,
       },
       {
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
         element: <SectorialView />,
       },
       {
-        path: "index-analysis",
+        path: "options-analysis",
         element: <IndexAnalysis />,
       },
       {
@@ -105,10 +105,10 @@ const router = createBrowserRouter([
         path: "summary",
         element: <Summary />,
       },
-      {
-        path: "trade-ideas",
-        element: <TradeIdeas />,
-      },
+      // {
+      //   path: "trade-ideas",
+      //   element: <TradeIdeas />,
+      // },
       {
         path: "community",
         element: <Community />,

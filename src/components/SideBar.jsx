@@ -40,7 +40,7 @@ const Sidebar = ({ tab }) => {
 
   const links = [
     { name: "Swing Center", to: "/swing-center", icon: swing },
-    { name: "Market Depth", to: "/market-depth", icon: bullishBlack },
+    { name: "Market Analysis", to: "/market-analysis", icon: bullishBlack },
     {
       name: "Momentum Spike",
       to: "/momentum-spike",
@@ -51,10 +51,14 @@ const Sidebar = ({ tab }) => {
       to: "/sectorial-view",
       icon: assetManagementBlack,
     },
-    { name: "Index Analysis", to: "/index-analysis", icon: dataReportBlack },
+    {
+      name: "Options Analysis",
+      to: "/options-analysis",
+      icon: dataReportBlack,
+    },
     { name: "Money Flux", to: "/money-flux", icon: marketResearchBlack },
     { name: "Summary", to: "/summary", icon: contractBlack },
-    { name: "Trade Ideas", to: "/trade-ideas", icon: lightBulbBlack },
+    // { name: "Trade Ideas", to: "/trade-ideas", icon: lightBulbBlack },
     { name: "Community", to: "/community", icon: socialRespBlack },
     { name: "Settings", to: "/settings", icon: settingsBlack },
   ];

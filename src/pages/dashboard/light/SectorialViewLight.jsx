@@ -94,7 +94,7 @@ export default function SectorialViewLight() {
           <SectorialViewChart data={stockData} />
         </div>
         {/* Block 1 */}
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">
           <div className="flex flex-col md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Technology Services
@@ -121,7 +121,7 @@ export default function SectorialViewLight() {
           </div>
         </div>
         {/* Block 2 */}
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">
           <div className="flex flex-col md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Energy Sector
@@ -148,7 +148,7 @@ export default function SectorialViewLight() {
           </div>
         </div>
         {/* Block 3 */}
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">
           <div className="flex flex-col md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Consumer Goods
@@ -175,7 +175,7 @@ export default function SectorialViewLight() {
           </div>
         </div>
         {/* Block 4 */}
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">
           <div className="flex flex-col md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Industrials
@@ -202,7 +202,7 @@ export default function SectorialViewLight() {
           </div>
         </div>
         {/* Block 5 */}
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">
           <div className="flex flex-col md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Communication Services
@@ -229,7 +229,7 @@ export default function SectorialViewLight() {
           </div>
         </div>
         {/* Block 6 */}
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">
           <div className="flex flex-col md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Transportation
@@ -256,7 +256,7 @@ export default function SectorialViewLight() {
           </div>
         </div>
         {/* Block 7 */}
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-25">
           <div className="flex flex-col md:w-[40%] my-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Financial Tech

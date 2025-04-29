@@ -54,10 +54,10 @@ export default function MarketDepthDark() {
 
   return (
     <div className="flex flex-row">
-      <Sidebar tab={"Market Depth"} />
+      <Sidebar tab={"Market Analysis"} />
       <div className="flex flex-col w-full bg-black">
         <DashboardHeaderDark
-          title={"Market Depth"}
+          title={"Market Analysis"}
           subTitle={"Market Stock Data"}
         />
         <hr className="border-gray-600 my-5 mx-5" />

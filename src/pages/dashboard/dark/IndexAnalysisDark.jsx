@@ -93,10 +93,10 @@ export default function IndexAnalysisDark() {
   return (
     <>
       <div className="flex flex-row">
-        <Sidebar tab={"Index Analysis"} />
+        <Sidebar tab={"Options Analysis"} />
         <div className="flex flex-col w-full bg-black">
           <DashboardHeaderDark
-            title={"Option Analysis"}
+            title={"Options Analysis"}
             subTitle={
               "Analyze and understand option chain to make better trading decisions."
             }
