@@ -1,5 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
+import { useEffect, useState } from "react";
+
+function useResponsiveRadius() {
+  const [radii, setRadii] = useState({ inner: 60, outer: 100 });
+
+  useEffect(() => {
+    const updateSize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setRadii({ inner: 40, outer: 70 });
+      } else if (width < 768) {
+        setRadii({ inner: 60, outer: 90 });
+      } else {
+        setRadii({ inner: 80, outer: 120 });
+      }
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  return radii;
+}
 
 const data = [
   { name: "Total Call OI", value: 1200 }, // Example CE OI
@@ -37,6 +61,7 @@ const renderCustomizedLabel = ({
 };
 
 const OIPieChart = () => {
+  const { inner, outer } = useResponsiveRadius();
   const [hoveredData, setHoveredData] = useState(null);
 
   // Calculate Put/Call Ratio (PCR)
@@ -45,26 +70,36 @@ const OIPieChart = () => {
   const handleMouseEnter = (entry) => setHoveredData(entry);
   const handleMouseLeave = () => setHoveredData(null);
   return (
-    <div className="flex flex-row bg-[#212429] border border-gray-600 rounded">
-      <div className="flex flex-col items-center justify-center text-white w-1/2">
-        <h2 className="my-6 text-4xl">P/C Ratio</h2>
-        <h4 className="flex gap-1 mt-3 mb-0 text-2xl">
-          <span className="w-7 h-7 bg-[#64CE6B] inline-block"></span>
-          Total <span className="text-[#64CE6B]">PE</span> OI:{" "}
+    <div className="flex flex-col md:flex-row lg:flex-row bg-[#212429] border border-gray-600 rounded">
+      <div className="flex flex-col items-center justify-center text-white w-full md:w-1/2 lg:w-1/2">
+        <h2 className="my-2 md:my-4 lg:my-6 text-lg md:text-2xl lg:text-4xl">
+          P/C Ratio
+        </h2>
+        <div className="flex items-center justify-center flex-row md:flex-col lg:flex-col gap-1">
+          <h4 className="flex gap-1 mt-1 md:mt-2 lg:mt-3 mb-0 text-sm md:text-lg lg:text-2xl">
+            <span className="mt-1 md:mt-0 lg:mt-0 w-3 h-3 md:w-5 md:h-5 lg:w-7 lg:h-7 bg-[#64CE6B] inline-block"></span>
+            Total <span className="text-[#64CE6B]">PE</span> OI:{" "}
+          </h4>
+          <h4 className="flex items-center justify-center rounded-lg bg-[#4C4C84] p-1 md:p-1 lg:p-2 text-sm md:text-lg lg:text-2xl w-full md:w-1/2 lg:w-1/2">
+            {data[1].value}
+          </h4>
+        </div>
+
+        <div className="flex items-center justify-center flex-row md:flex-col lg:flex-col gap-1">
+          <h4 className="flex gap-1 mt-5 md:mt-3 lg:mt-3 mb-0 text-sm md:text-lg lg:text-2xl">
+            <span className="mt-1 md:mt-0 lg:mt-0 w-3 h-3 md:w-5 md:h-5 lg:w-7 lg:h-7 bg-[#E96667] inline-block"></span>
+            Total <span className="text-[#E96667]">CE</span> OI:
+          </h4>
+          <h4 className="flex items-center justify-center rounded-lg bg-[#4C4C84] mt-4 md:mt-0 lg:mt-0 p-1 md:p-1 lg:p-2 text-sm md:text-lg lg:text-2xl w-full md:w-1/2 lg:w-1/2">
+            {data[0].value}
+          </h4>
+        </div>
+
+        <h4 className="my-4 md:my-4 lg:my-6 text-sm md:text-lg lg:text-2xl font-semibold">
+          PCR: {pcr}
         </h4>
-        <h4 className="rounded-lg bg-[#4C4C84] p-2 text-2xl">
-          {data[1].value}
-        </h4>
-        <h4 className="flex gap-1 mt-3 mb-0 text-2xl">
-          <span className="w-7 h-7 bg-[#E96667] inline-block"></span>
-          Total <span className="text-[#E96667]">CE</span> OI:
-        </h4>
-        <h4 className="rounded-lg bg-[#4C4C84] p-2 text-2xl">
-          {data[0].value}
-        </h4>
-        <h4 className="my-6 text-2xl font-semibold">PCR: {pcr}</h4>
       </div>
-      <div className="w-1/2 relative">
+      <div className="relative w-full sm:w-5/6 md:w-2/3 lg:w-1/2 h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px]">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -73,8 +108,8 @@ const OIPieChart = () => {
               nameKey="name"
               cx="50%"
               cy="50%"
-              innerRadius={80}
-              outerRadius={120}
+              innerRadius={inner}
+              outerRadius={outer}
               label={renderCustomizedLabel}
               labelLine={false}
               stroke="black"
@@ -88,6 +123,7 @@ const OIPieChart = () => {
             <Tooltip />
           </PieChart>
         </ResponsiveContainer>
+
         {/* Center Info */}
         <div
           style={{

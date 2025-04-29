@@ -59,7 +59,7 @@ const CustomTooltip = ({ active, payload }) => {
 const OIChangeBarGraph = () => {
   return (
     <div className="bg-[#212429] border border-gray-600 rounded w-full">
-      <div className="h-[275px] pr-5">
+      <div className="h-[275px] pr-5 ms-[-10px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}

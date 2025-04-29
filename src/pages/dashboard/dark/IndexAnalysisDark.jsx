@@ -104,7 +104,7 @@ export default function IndexAnalysisDark() {
           <hr className="border-gray-600 my-5 mx-5" />
 
           {/* Top Dropdown Section */}
-          <div className="flex flex-row justify-around items-center h-100">
+          <div className="flex flex-row justify-around items-center h-screen mt-[-80px]">
             {/* Equity Options Button */}
             <div
               className="relative"
@@ -250,11 +250,11 @@ export default function IndexAnalysisDark() {
             <OIChart />
           </div>
 
-          <div className="flex flex-row mb-10 px-4">
-            <div className="w-[70%] mr-4">
+          <div className="flex flex-col md:flex-row lg:flex-row mb-10 px-4">
+            <div className="w-full md:w-[70%] lg:w-[70%] mr-0 md:mr-4 lg:mr-4 mb-10">
               <OIPieChart />
             </div>
-            <div className="w-[30%]">
+            <div className="w-full md:w-[30%] lg:w-[30%]">
               <OIChangeBarGraph />
             </div>
           </div>
@@ -343,11 +343,11 @@ export default function IndexAnalysisDark() {
             <OIChart />
           </div>
 
-          <div className="flex flex-row mb-10 px-4">
-            <div className="w-[70%] mr-4">
+          <div className="flex flex-col md:flex-row lg:flex-row mb-10 px-4">
+            <div className="w-full md:w-[70%] lg:w-[70%] mr-0 md:mr-4 lg:mr-4 mb-10">
               <OIPieChart />
             </div>
-            <div className="w-[30%]">
+            <div className="w-full md:w-[30%] lg:w-[30%]">
               <OIChangeBarGraph />
             </div>
           </div>

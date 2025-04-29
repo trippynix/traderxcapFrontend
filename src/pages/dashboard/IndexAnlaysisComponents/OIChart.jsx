@@ -230,8 +230,8 @@ const OIChart = () => {
   return (
     <div className="w-full h-[35vh] sm:h-[50vh] md:h-[55vh]">
       <ResponsiveContainer
-        width="100%"
-        height="100%"
+        width={"100%"}
+        height={"100%"}
         className="bg-[#212429] border border-gray-600 rounded"
       >
         <BarChart
