@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/SideBar";
 import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../../../components/useAuthCheck";
@@ -14,9 +14,11 @@ import {
   ReferenceLine,
   Cell,
 } from "recharts";
+import SortableTableLight from "../sortTableComponent/SortableTableLight";
+import SectorialViewChart from "../../../components/SectorialViewChart";
 
 export default function SectorialViewLight() {
-  const data = [
+  const stockData = [
     { name: "Stock A", change: 1.2 },
     { name: "Stock B", change: -0.5 },
     { name: "Stock C", change: 2.1 },
@@ -42,52 +44,244 @@ export default function SectorialViewLight() {
       }
     }
   }, [isAuthenticated, loading, navigate]);
+
+  const columns = [
+    { key: "symbol", label: "Symbol" },
+    { key: "name", label: "Name" },
+    { key: "exchange", label: "Exchange" },
+    { key: "volume", label: "Volume" },
+  ];
+
+  const [data, setData] = useState([]);
+  const [dataLoading, setDataLoading] = useState(true);
+
+  const apiKey = import.meta.env.VITE_TWELVE_DATA_API;
+  // Fetch data from API
+  const fetchData = async () => {
+    try {
+      const res = await fetch(
+        `https://api.twelvedata.com/quote?symbol=AAPL&interval=5min&apikey=${apiKey}`
+      );
+      const result = await res.json();
+
+      if (result && result.symbol) {
+        // Wrap the object in an array before setting the state
+        setData([result]);
+      } else {
+        console.error("Unexpected API response:", result);
+      }
+    } catch (e) {
+      console.error("Error fetching data:", e);
+    } finally {
+      setDataLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
-    <div className="d-flex flex-row">
+    <div className="flex flex-row">
       <Sidebar tab={"Sectorial View"} />
-      <div className="container-fluid d-flex flex-column bg-light">
+      <div className="flex flex-col w-full bg-white">
         <DashboardHeaderLight
           title={"Sectorial View"}
           subTitle={"asdasdasdas"}
         />
-        <hr style={{ color: "black", backgroundColor: "black" }} />
-        <ResponsiveContainer
-          width="100%"
-          height={450}
-          stroke="black"
-          strokeWidth={1}
-        >
-          <BarChart
-            data={data}
-            margin={{ top: 20, right: 30, left: 30, bottom: 5 }}
-          >
-            <CartesianGrid horizontal={true} vertical={false} stroke="black" />
-            <XAxis
-              dataKey="name"
-              angle={-90}
-              textAnchor="end"
-              height={80}
-              tick={{ fontSize: 12, fill: "#000000" }}
-            />
-            <YAxis
-              domain={["auto", "auto"]}
-              tickFormatter={(tick) => `${tick}`}
-              tick={{ fill: "#000000" }}
-            />
-            <Tooltip />
-            <ReferenceLine y={0} stroke="black" strokeWidth={1} />{" "}
-            {/* X-axis at 0 */}
-            {/* Corrected Bar Implementation */}
-            <Bar dataKey="change" barSize={35} radius={[5, 5, 0, 0]}>
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={entry.change < 0 ? "#ED1C1C" : "#8884d8"}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+        <hr className="border-gray-600 my-5 mx-5" />
+
+        <div className="my-10 px-4">
+          <SectorialViewChart data={stockData} />
+        </div>
+        {/* Block 1 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Technology Services
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Finance Sector
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+        {/* Block 2 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Energy Sector
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Healthcare
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+        {/* Block 3 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Consumer Goods
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Utilities
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+        {/* Block 4 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Industrials
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Real Estate
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+        {/* Block 5 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Communication Services
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Materials
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+        {/* Block 6 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Transportation
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Tech Hardware
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
+        {/* Block 7 */}
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Financial Tech
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+          <div className="flex flex-col md:w-[40%] my-4 md:my-0">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
+              Insurance
+            </p>
+            {dataLoading ? (
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base">
+                Loading data...
+              </p>
+            ) : (
+              <SortableTableLight data={data} columns={columns} />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

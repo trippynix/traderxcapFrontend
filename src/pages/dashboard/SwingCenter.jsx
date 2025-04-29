@@ -1,22 +1,11 @@
-import React, { useEffect } from "react";
-import Sidebar from "../../components/SideBar";
-import { useNavigate } from "react-router-dom";
-import { useAuthCheck } from "../../components/useAuthCheck";
+import React from "react";
+import useTheme from "../../context/ThemeContext";
+import SwingCenterLight from "./light/SwingCenterLight";
+import SwingCenterDark from "./dark/SwingCenterDark";
 
 export default function SwingCenter() {
-  const navigate = useNavigate();
-  const { isAuthenticated, loading } = useAuthCheck();
-  useEffect(() => {
-    if (!loading) {
-      if (!isAuthenticated) {
-        navigate("/not-auth");
-      }
-    }
-  }, [isAuthenticated, loading, navigate]);
+  const { themeMode } = useTheme();
   return (
-    <div className="d-flex flex-row">
-      <Sidebar tab={"Swing Center"} />
-      SwingCenter
-    </div>
+    <>{themeMode === "light" ? <SwingCenterLight /> : <SwingCenterDark />}</>
   );
 }

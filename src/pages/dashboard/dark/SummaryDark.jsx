@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Sidebar from "../../../components/SideBar";
 import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../../../components/useAuthCheck";
+import DashboardHeaderDark from "./DashboardHeaderDark";
 
 export default function SummaryDark() {
   const navigate = useNavigate();
@@ -14,9 +15,15 @@ export default function SummaryDark() {
     }
   }, [isAuthenticated, loading, navigate]);
   return (
-    <div className="d-flex flex-row">
+    <div className="flex flex-row">
       <Sidebar tab={"Summary"} />
-      Summary
+      <div className="flex flex-col w-full bg-black">
+        <DashboardHeaderDark
+          title={"Summary"}
+          subTitle={"Find the Summary of market here."}
+        />
+        <hr className="border-gray-600 my-5 mx-5" />
+      </div>
     </div>
   );
 }

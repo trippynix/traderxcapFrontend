@@ -85,10 +85,10 @@ export default function MoneyFluxLight() {
       <Sidebar tab={"Money Flux"} />
       <div className="flex flex-col w-full bg-white">
         <DashboardHeaderLight
-          title={"Momentum Spike"}
-          subTitle={"asdasdasdas"}
+          title={"Money Flux"}
+          subTitle={"Sectorial Flow and Where the smart money is going."}
         />
-        <hr style={{ color: "black", backgroundColor: "black" }} />
+        <hr className="border-gray-600 my-5 mx-5" />
 
         {/* <ResponsiveContainer width="100%" height={400}>
           <Treemap data={formattedData} dataKey="size" stroke="#fff">

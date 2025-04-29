@@ -34,14 +34,16 @@ export default function MomentumSpikeLight() {
   const [data, setData] = useState([]);
   const [dataLoading, setDataLoading] = useState(true);
 
-  const apiKey = import.meta.env.VITE_TWELVE_DATA_API;
+  const API_KEY = import.meta.env.VITE_TWELVE_DATA_API;
+
   // Fetch data from API
   const fetchData = async () => {
     try {
       const res = await fetch(
-        `https://api.twelvedata.com/quote?symbol=AAPL&interval=5min&apikey=${apiKey}`
+        `https://api.twelvedata.com/quote?symbol=AAPL&interval=5min&apikey=${API_KEY}`
       );
       const result = await res.json();
+      console.log("API Response:", result);
 
       if (result && result.symbol) {
         // Wrap the object in an array before setting the state
@@ -68,7 +70,7 @@ export default function MomentumSpikeLight() {
           title={"Momentum Spike"}
           subTitle={"asdasdasdas"}
         />
-        <hr className="border-black" />
+        <hr className="border-gray-600 my-5 mx-5" />
         <div className="container mx-auto mt-4 p-3">
           {/*----------------------------------------- 5 min Momentum */}
           <h4 className="text-center text-xs md:text-sm lg:text-base mb-3 text-black">

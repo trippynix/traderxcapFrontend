@@ -1,22 +1,9 @@
-import React, { useEffect } from "react";
-import Sidebar from "../../components/SideBar";
-import { useNavigate } from "react-router-dom";
-import { useAuthCheck } from "../../components/useAuthCheck";
+import React from "react";
+import useTheme from "../../context/ThemeContext";
+import SummaryLight from "./light/SummaryLight";
+import SummaryDark from "./dark/SummaryDark";
 
 export default function Summary() {
-  const navigate = useNavigate();
-  const { isAuthenticated, loading } = useAuthCheck();
-  useEffect(() => {
-    if (!loading) {
-      if (!isAuthenticated) {
-        navigate("/not-auth");
-      }
-    }
-  }, [isAuthenticated, loading, navigate]);
-  return (
-    <div className="d-flex flex-row">
-      <Sidebar tab={"Summary"} />
-      Summary
-    </div>
-  );
+  const { themeMode } = useTheme();
+  return <>{themeMode === "light" ? <SummaryLight /> : <SummaryDark />}</>;
 }

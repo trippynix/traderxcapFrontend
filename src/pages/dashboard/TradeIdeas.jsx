@@ -1,22 +1,11 @@
-import React, { useEffect } from "react";
-import Sidebar from "../../components/SideBar";
-import { useNavigate } from "react-router-dom";
-import { useAuthCheck } from "../../components/useAuthCheck";
+import React from "react";
+import useTheme from "../../context/ThemeContext";
+import TradeIdeasLight from "./light/TradeIdeasLight";
+import TradeIdeasDark from "./dark/TradeIdeasDark";
 
 export default function TradeIdeas() {
-  const navigate = useNavigate();
-  const { isAuthenticated, loading } = useAuthCheck();
-  useEffect(() => {
-    if (!loading) {
-      if (!isAuthenticated) {
-        navigate("/not-auth");
-      }
-    }
-  }, [isAuthenticated, loading, navigate]);
+  const { themeMode } = useTheme();
   return (
-    <div className="d-flex flex-row">
-      <Sidebar tab={"Trade Ideas"} />
-      TradeIdeas
-    </div>
+    <>{themeMode === "light" ? <TradeIdeasLight /> : <TradeIdeasDark />}</>
   );
 }

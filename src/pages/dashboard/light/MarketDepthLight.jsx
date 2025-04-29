@@ -54,50 +54,61 @@ export default function MarketDepthDark() {
   }, []);
 
   return (
-    <div className="d-flex flex-row">
+    <div className="flex flex-row">
       <Sidebar tab={"Market Depth"} />
-      <div className="container-fluid d-flex flex-column">
+      <div className="flex flex-col w-full bg-white">
         <DashboardHeaderLight
           title={"Market Depth"}
-          subTitle={"ASdasdasdasd"}
+          subTitle={"Market Stock Data"}
         />
-        <hr />
-        <div className="d-flex flex-row justify-content-around">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Momentum Stocks</p>
+        <hr className="border-gray-600 my-5 mx-5" />
+
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4">
+          <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
+            <p className="text-white text-xs md:text-sm lg:text-base mb-1">
+              Momentum Stocks
+            </p>
             {dataLoading ? (
-              <p className="text-dark">Loading data...</p>
+              <p className="text-gray-300">Loading data...</p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
 
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Volume Spike</p>
+          <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
+            <p className="text-white text-xs md:text-sm lg:text-base mb-1">
+              Volume Spike
+            </p>
             {dataLoading ? (
-              <p className="text-dark">Loading data...</p>
+              <p className="text-gray-300">Loading data...</p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
         </div>
-        <div className="d-flex flex-row justify-content-around my-5">
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Volatility</p>
+
+        <div className="flex flex-col md:flex-row lg:flex-row  justify-around px-4">
+          <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
+            <p className="text-white text-xs md:text-sm lg:text-base mb-1">
+              Volatility
+            </p>
             {dataLoading ? (
-              <p className="text-dark">Loading data...</p>
+              <p className="text-gray-300">Loading data...</p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
           </div>
-          <div className="d-flex flex-column" style={{ width: "40%" }}>
-            <p className="text-dark">Top Gainers and Losers</p>
+
+          <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
+            <p className="text-white text-xs md:text-sm lg:text-base mb-1">
+              Top Gainers and Losers
+            </p>
             {dataLoading ? (
-              <p className="text-dark">Loading data...</p>
+              <p className="text-gray-300">Loading data...</p>
             ) : (
               <SortableTableLight data={data} columns={columns} />
             )}
-          </div>{" "}
+          </div>
           {/* ONLY FOR 4 COLUMNS OF PREDEFINED NAME CHANGE COL NAMES IN COMPONENT JSX TOO IF CHANGED HERE */}
         </div>
       </div>
