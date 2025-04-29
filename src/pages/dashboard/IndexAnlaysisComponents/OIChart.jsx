@@ -257,19 +257,60 @@ const OIChart = () => {
           />
           <Legend
             verticalAlign="bottom"
-            content={({ payload }) => (
-              <div className="w-full flex justify-center mt-2 space-x-4 ms-4 md:ms-0 lg:ms-0">
-                {payload?.map((entry, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <span
-                      className="w-3 h-3 rounded-full"
-                      style={{ backgroundColor: entry.color }}
-                    ></span>
-                    <span className="text-white text-xs md:text-sm lg:text-lg">
-                      {entry.value === "callOI" ? "Call OI" : "Put OI"}
-                    </span>
-                  </div>
-                ))}
+            content={() => (
+              <div className="w-full flex justify-center mt-2 space-x-4 flex-wrap">
+                {/* Call OI */}
+                <div className="flex items-center space-x-2">
+                  <span className="w-3 h-3 rounded-full bg-[#E96667]" />
+                  <span className="text-white text-xs md:text-sm lg:text-lg">
+                    Call OI
+                  </span>
+                </div>
+                {/* Call Change */}
+                <div className="flex items-center space-x-2">
+                  <svg
+                    width="12"
+                    height="12"
+                    style={{ border: "solid 1px white" }}
+                  >
+                    <ZigzagPattern id="legend-call-pattern" color="red" />
+                    <rect width="12" height="12" fill="#E96667" />
+                    <rect
+                      width="12"
+                      height="12"
+                      fill="url(#legend-call-pattern)"
+                    />
+                  </svg>
+                  <span className="text-white text-xs md:text-sm lg:text-lg">
+                    Call Change
+                  </span>
+                </div>
+                {/* Put OI */}
+                <div className="flex items-center space-x-2">
+                  <span className="w-3 h-3 rounded-full bg-[#64CE6B]" />
+                  <span className="text-white text-xs md:text-sm lg:text-lg">
+                    Put OI
+                  </span>
+                </div>
+                {/* Put Change */}
+                <div className="flex items-center space-x-2">
+                  <svg
+                    width="12"
+                    height="12"
+                    style={{ border: "solid 1px white" }}
+                  >
+                    <ZigzagPattern id="legend-put-pattern" color="green" />
+                    <rect width="12" height="12" fill="#64CE6B" />
+                    <rect
+                      width="12"
+                      height="12"
+                      fill="url(#legend-put-pattern)"
+                    />
+                  </svg>
+                  <span className="text-white text-xs md:text-sm lg:text-lg">
+                    Put Change
+                  </span>
+                </div>
               </div>
             )}
           />
