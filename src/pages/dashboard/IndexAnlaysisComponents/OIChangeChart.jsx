@@ -10,25 +10,6 @@ import {
   Legend,
 } from "recharts";
 
-const data = [
-  { strike: 17000, callChange: 30, putChange: -15 },
-  { strike: 17100, callChange: 50, putChange: -20 },
-  { strike: 17200, callChange: -10, putChange: 25 },
-  { strike: 17300, callChange: -30, putChange: 40 },
-  { strike: 17000, callChange: 30, putChange: -15 },
-  { strike: 17100, callChange: 50, putChange: -20 },
-  { strike: 17200, callChange: -10, putChange: 25 },
-  { strike: 17300, callChange: -30, putChange: 40 },
-  { strike: 17000, callChange: 30, putChange: -15 },
-  { strike: 17100, callChange: 50, putChange: -20 },
-  { strike: 17200, callChange: -10, putChange: 25 },
-  { strike: 17300, callChange: -30, putChange: 40 },
-  { strike: 17000, callChange: 30, putChange: -15 },
-  { strike: 17100, callChange: 50, putChange: -20 },
-  { strike: 17200, callChange: -10, putChange: 25 },
-  { strike: 17300, callChange: -30, putChange: 40 },
-];
-
 // RESPONSIVE BAR SIZE ********************** //
 const useResponsiveBarSize = () => {
   const [barSize, setBarSize] = useState(20); // default for large screens
@@ -108,7 +89,7 @@ const CustomTooltip = ({ active, payload }) => {
   }
   return null;
 };
-const OIChangeChart = () => {
+const OIChangeChart = ({ data }) => {
   const barSize = useResponsiveBarSize();
   const fontSize = useResponsiveFontSize();
   return (

@@ -25,11 +25,6 @@ function useResponsiveRadius() {
   return radii;
 }
 
-const data = [
-  { name: "Total Call OI", value: 1200 }, // Example CE OI
-  { name: "Total Put OI", value: 900 }, // Example PE OI
-];
-
 const COLORS = ["#E96667", "#64CE6B"]; // Green for CE, Red for PE
 
 // Custom label to display inside the ring
@@ -60,7 +55,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const OIPieChart = () => {
+const OIPieChart = ({ data }) => {
   const { inner, outer } = useResponsiveRadius();
   const [hoveredData, setHoveredData] = useState(null);
 

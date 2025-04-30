@@ -54,21 +54,6 @@ const useResponsiveFontSize = () => {
   return fontSize;
 };
 
-const data = [
-  { strike: "17000", callOI: 100, putOI: 80, callChange: -20, putChange: 10 },
-  { strike: "17100", callOI: 120, putOI: 90, callChange: 30, putChange: -15 },
-  { strike: "17200", callOI: 110, putOI: 100, callChange: -10, putChange: 20 },
-  { strike: "17300", callOI: 140, putOI: 120, callChange: 15, putChange: -25 },
-  { strike: "17000", callOI: 100, putOI: 80, callChange: -20, putChange: 10 },
-  { strike: "17100", callOI: 120, putOI: 90, callChange: 30, putChange: -15 },
-  { strike: "17200", callOI: 110, putOI: 100, callChange: -10, putChange: 20 },
-  { strike: "17300", callOI: 140, putOI: 120, callChange: 15, putChange: -25 },
-  { strike: "17000", callOI: 100, putOI: 80, callChange: -20, putChange: 10 },
-  { strike: "17100", callOI: 120, putOI: 90, callChange: 30, putChange: -15 },
-  { strike: "17200", callOI: 110, putOI: 100, callChange: -10, putChange: 20 },
-  { strike: "17300", callOI: 140, putOI: 120, callChange: 15, putChange: -25 },
-];
-
 const ZigzagPattern = ({ id, color }) => (
   <defs>
     <pattern id={id} width="10" height="10" patternUnits="userSpaceOnUse">
@@ -223,7 +208,7 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-const OIChart = () => {
+const OIChart = ({ data }) => {
   const barSize = useResponsiveBarSize();
   const fontSize = useResponsiveFontSize();
 

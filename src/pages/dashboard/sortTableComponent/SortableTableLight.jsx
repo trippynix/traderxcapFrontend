@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-{
-  /* ONLY FOR 4 COLUMNS */
-}
 const SortableTableLight = ({ data, columns }) => {
   const [tableData, setTableData] = useState(data);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -38,7 +35,7 @@ const SortableTableLight = ({ data, columns }) => {
   return (
     <div className="w-full max-h-[400px] overflow-y-scroll text-center">
       <table className="w-full text-white text-[10px] md:text-[10px] lg:text-sm bg-[#E9ECEF]">
-        <thead className="text-white text-center text-[10px] md:text-[10px] lg:text-sm sticky top-0 z-10 cursor-pointer bg-[#5b5b5b]">
+        <thead className="text-white text-center text-[6px] md:text-[10px] lg:text-sm sticky top-0 z-10 cursor-pointer bg-[#5b5b5b]">
           <tr>
             {columns.map((col) => (
               <th
@@ -57,22 +54,44 @@ const SortableTableLight = ({ data, columns }) => {
         <tbody className="text-center text-[10px] md:text-[10px] lg:text-sm">
           {tableData.map((row, index) => (
             <tr key={index}>
-              <td className="py-2">
-                <div className="p-0 mx-3 bg-black rounded">
-                  <span className="text-white font-medium">{row.symbol}</span>
-                </div>
-              </td>
-              <td className="text-black">{row.name}</td>
-              <td>
-                <div className="p-0 border-2 border-black rounded-lg bg-[#01fd1f]">
-                  <span className="text-white font-medium">{row.exchange}</span>
-                </div>
-              </td>
-              <td>
-                <div className="p-0 border-2 border-black rounded-lg bg-[#8677FF] mx-3">
-                  <span className="text-white font-medium">{row.volume}</span>
-                </div>
-              </td>
+              {columns.map((col) => (
+                <td key={col.key} className="py-2">
+                  {col.key === "exchange" ||
+                  col.key === "vol_spike" ||
+                  col.key === "previousHigh" ||
+                  col.key === "previousLow" ? (
+                    <div className="p-0 border-2 border-white rounded-lg bg-[#01fd1f]">
+                      <span className="text-black font-medium">
+                        {row[col.key]}
+                      </span>
+                    </div>
+                  ) : null}
+                  {col.key === "volume" ||
+                  col.key === "iv_change" ||
+                  col.key === "priceDifference" ||
+                  col.key === "momentum_score" ? (
+                    <div className="p-0 border-2 border-white rounded-lg bg-[#8677FF] mx-3">
+                      <span className="text-black font-medium">
+                        {row[col.key]}
+                      </span>
+                    </div>
+                  ) : null}
+                  {col.key !== "exchange" &&
+                    col.key !== "volume" &&
+                    col.key !== "vol_spike" &&
+                    col.key !== "iv_change" &&
+                    col.key !== "previousHigh" &&
+                    col.key !== "priceDifference" &&
+                    col.key !== "previousLow" &&
+                    col.key !== "momentum_score" && (
+                      <div className="p-0 mx-3 bg-black border-white border-2 rounded">
+                        <span className="text-white font-medium">
+                          {row[col.key]}
+                        </span>
+                      </div>
+                    )}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>

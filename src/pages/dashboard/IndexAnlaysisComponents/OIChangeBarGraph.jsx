@@ -11,15 +11,6 @@ import {
   Cell,
 } from "recharts";
 
-const data = [
-  { type: "Call Chng", value: -50 }, // Positive CE OI Change (Red)
-  { type: "Put Chng", value: 70 }, // Negative PE OI Change (Red)
-];
-
-// Calculate Y-axis domain dynamically (50% more than max absolute value)
-const maxAbsValue = Math.max(...data.map((d) => Math.abs(d.value)));
-const yDomain = [-(maxAbsValue * 1.5), maxAbsValue * 1.5];
-
 const getColor = (entry) => {
   if (entry.type === "Call Chng") {
     return entry.value >= 0 ? "#E96667" : "#64CE6B"; // Red if +, Green if -
@@ -56,7 +47,10 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-const OIChangeBarGraph = () => {
+const OIChangeBarGraph = ({ data }) => {
+  // Calculate Y-axis domain dynamically (50% more than max absolute value)
+  const maxAbsValue = Math.max(...data.map((d) => Math.abs(d.value)));
+  const yDomain = [-(maxAbsValue * 1.5), maxAbsValue * 1.5];
   return (
     <div className="bg-[#212429] border border-gray-600 rounded w-full">
       <div className="h-[275px] pr-5 ms-[-10px]">

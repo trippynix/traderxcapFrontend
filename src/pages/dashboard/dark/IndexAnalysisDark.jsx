@@ -21,6 +21,89 @@ export default function IndexAnalysisDark() {
     }
   }, [isAuthenticated, loading, navigate]);
 
+  // OPTIONS BAR GRAPH DATA **********//
+  const barData = [
+    { strike: "17000", callOI: 100, putOI: 80, callChange: -20, putChange: 10 },
+    { strike: "17100", callOI: 120, putOI: 90, callChange: 30, putChange: -15 },
+    {
+      strike: "17200",
+      callOI: 110,
+      putOI: 100,
+      callChange: -10,
+      putChange: 20,
+    },
+    {
+      strike: "17300",
+      callOI: 140,
+      putOI: 120,
+      callChange: 15,
+      putChange: -25,
+    },
+    { strike: "17000", callOI: 100, putOI: 80, callChange: -20, putChange: 10 },
+    { strike: "17100", callOI: 120, putOI: 90, callChange: 30, putChange: -15 },
+    {
+      strike: "17200",
+      callOI: 110,
+      putOI: 100,
+      callChange: -10,
+      putChange: 20,
+    },
+    {
+      strike: "17300",
+      callOI: 140,
+      putOI: 120,
+      callChange: 15,
+      putChange: -25,
+    },
+    { strike: "17000", callOI: 100, putOI: 80, callChange: -20, putChange: 10 },
+    { strike: "17100", callOI: 120, putOI: 90, callChange: 30, putChange: -15 },
+    {
+      strike: "17200",
+      callOI: 110,
+      putOI: 100,
+      callChange: -10,
+      putChange: 20,
+    },
+    {
+      strike: "17300",
+      callOI: 140,
+      putOI: 120,
+      callChange: 15,
+      putChange: -25,
+    },
+  ];
+
+  // OPTIONS PIE CHART DATA ***************//
+  const pieData = [
+    { name: "Total Call OI", value: 1200 }, // Example CE OI
+    { name: "Total Put OI", value: 900 }, // Example PE OI
+  ];
+
+  // OPTIONS CHANGE COMPARISON BAR GRAPH DATA *****************//
+  const changeBarData = [
+    { type: "Call Chng", value: -50 }, // Positive CE OI Change (Red)
+    { type: "Put Chng", value: 70 }, // Negative PE OI Change (Red)
+  ];
+
+  // OPTIONS CHANGE BAR GRAPH DATA ****************//
+  const changeBarStrikeData = [
+    { strike: 17000, callChange: 30, putChange: -15 },
+    { strike: 17100, callChange: 50, putChange: -20 },
+    { strike: 17200, callChange: -10, putChange: 25 },
+    { strike: 17300, callChange: -30, putChange: 40 },
+    { strike: 17000, callChange: 30, putChange: -15 },
+    { strike: 17100, callChange: 50, putChange: -20 },
+    { strike: 17200, callChange: -10, putChange: 25 },
+    { strike: 17300, callChange: -30, putChange: 40 },
+    { strike: 17000, callChange: 30, putChange: -15 },
+    { strike: 17100, callChange: 50, putChange: -20 },
+    { strike: 17200, callChange: -10, putChange: 25 },
+    { strike: 17300, callChange: -30, putChange: 40 },
+    { strike: 17000, callChange: 30, putChange: -15 },
+    { strike: 17100, callChange: 50, putChange: -20 },
+    { strike: 17200, callChange: -10, putChange: 25 },
+    { strike: 17300, callChange: -30, putChange: 40 },
+  ];
   const [isEquityOptionsOpen, setIsEquityOptionsOpen] = useState(false);
   const [isETFOptionsOpen, setIsETFOptionsOpen] = useState(false);
   // Refs for scrolling
@@ -247,20 +330,20 @@ export default function IndexAnalysisDark() {
           </div>
 
           <div className="my-10 px-4">
-            <OIChart />
+            <OIChart data={barData} />
           </div>
 
           <div className="flex flex-col md:flex-row lg:flex-row mb-10 px-4">
             <div className="w-full md:w-[70%] lg:w-[70%] mr-0 md:mr-4 lg:mr-4 mb-10">
-              <OIPieChart />
+              <OIPieChart data={pieData} />
             </div>
             <div className="w-full md:w-[30%] lg:w-[30%]">
-              <OIChangeBarGraph />
+              <OIChangeBarGraph data={changeBarData} />
             </div>
           </div>
 
           <div className="mb-10 px-4">
-            <OIChangeChart />
+            <OIChangeChart data={changeBarStrikeData} />
           </div>
 
           {/* === ETF Options Section === */}
@@ -340,20 +423,20 @@ export default function IndexAnalysisDark() {
           </div>
 
           <div className="my-10 px-4">
-            <OIChart />
+            <OIChart data={barData} />
           </div>
 
           <div className="flex flex-col md:flex-row lg:flex-row mb-10 px-4">
             <div className="w-full md:w-[70%] lg:w-[70%] mr-0 md:mr-4 lg:mr-4 mb-10">
-              <OIPieChart />
+              <OIPieChart data={pieData} />
             </div>
             <div className="w-full md:w-[30%] lg:w-[30%]">
-              <OIChangeBarGraph />
+              <OIChangeBarGraph data={changeBarData} />
             </div>
           </div>
 
           <div className="mb-10 px-4">
-            <OIChangeChart />
+            <OIChangeChart data={changeBarStrikeData} />
           </div>
         </div>
       </div>
