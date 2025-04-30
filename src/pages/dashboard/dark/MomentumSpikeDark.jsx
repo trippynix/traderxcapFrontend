@@ -23,6 +23,49 @@ export default function MomentumSpikeDark() {
       }
     }
   }, [isAuthenticated, loading, navigate]);
+
+  // RESPONSIVE BAR SIZE ********************** //
+  const useResponsiveBarSize = () => {
+    const [barSize, setBarSize] = useState(20); // default for large screens
+
+    useEffect(() => {
+      const handleResize = () => {
+        const width = window.innerWidth;
+        if (width < 640) setBarSize(4); // xs
+        else if (width < 768) setBarSize(6); // sm
+        else if (width < 1024) setBarSize(10); // md
+        else setBarSize(20); // lg+
+      };
+
+      handleResize(); // call once on mount
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return barSize;
+  };
+
+  // RESPONSIVE AXES FONT SIZE ********************** //
+  const useResponsiveFontSize = () => {
+    const [fontSize, setFontSize] = useState(12); // default
+
+    useEffect(() => {
+      const handleResize = () => {
+        const width = window.innerWidth;
+        if (width < 640) setFontSize(5); // xs
+        else if (width < 768) setFontSize(9); // sm
+        else if (width < 1024) setFontSize(9); // md
+        else setFontSize(12); // lg+
+      };
+
+      handleResize(); // on mount
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return fontSize;
+  };
+
   const columns = [
     { key: "symbol", label: "Symbol" },
     { key: "name", label: "Name" },
@@ -356,6 +399,9 @@ export default function MomentumSpikeDark() {
     );
   };
 
+  const barSize = useResponsiveBarSize();
+  const fontSize = useResponsiveFontSize();
+
   return (
     <>
       <div className="flex flex-row">
@@ -372,55 +418,59 @@ export default function MomentumSpikeDark() {
             <h4 className="text-center text-xs md:text-sm lg:text-base mb-3 text-white">
               5 min Momentum Spike
             </h4>
-            <ResponsiveContainer width="100%" height={400}>
-              <BarChart data={sortedFiveMinData}>
-                <XAxis
-                  dataKey="stock"
-                  tick={{ fontSize: 10, fill: "#ffffff" }}
-                  angle={-90}
-                  textAnchor="end"
-                  height={80}
-                />
-                <YAxis tick={{ fontSize: 12, fill: "#ffffff" }} />
-                <Tooltip
-                  content={<CustomTooltip />}
-                  cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
-                />
-                <Bar
-                  dataKey="volume"
-                  fill="#8884d8"
-                  barSize={20}
-                  radius={[5, 5, 0, 0]}
-                />
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="ms-[-30px]">
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={sortedFiveMinData}>
+                  <XAxis
+                    dataKey="stock"
+                    tick={{ fontSize, fill: "#ffffff" }}
+                    angle={-90}
+                    textAnchor="end"
+                    height={80}
+                  />
+                  <YAxis tick={{ fontSize, fill: "#ffffff" }} />
+                  <Tooltip
+                    content={<CustomTooltip />}
+                    cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
+                  />
+                  <Bar
+                    dataKey="volume"
+                    fill="#8884d8"
+                    barSize={barSize}
+                    radius={[5, 5, 0, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
 
             {/* 15 min Momentum */}
             <h4 className="text-center text-xs md:text-sm lg:text-base mb-3 text-white">
               15 min Momentum Spike
             </h4>
-            <ResponsiveContainer width="100%" height={400}>
-              <BarChart data={sortedFifteenMinData}>
-                <XAxis
-                  dataKey="stock"
-                  tick={{ fontSize: 10, fill: "#ffffff" }}
-                  angle={-90}
-                  textAnchor="end"
-                  height={80}
-                />
-                <YAxis tick={{ fontSize: 12, fill: "#ffffff" }} />
-                <Tooltip
-                  content={<CustomTooltip />}
-                  cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
-                />
-                <Bar
-                  dataKey="volume"
-                  fill="#8884d8"
-                  barSize={20}
-                  radius={[5, 5, 0, 0]}
-                />
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="ms-[-30px]">
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={sortedFifteenMinData}>
+                  <XAxis
+                    dataKey="stock"
+                    tick={{ fontSize, fill: "#ffffff" }}
+                    angle={-90}
+                    textAnchor="end"
+                    height={80}
+                  />
+                  <YAxis tick={{ fontSize, fill: "#ffffff" }} />
+                  <Tooltip
+                    content={<CustomTooltip />}
+                    cursor={{ fill: "rgba(255, 255, 255, 0.3)" }}
+                  />
+                  <Bar
+                    dataKey="volume"
+                    fill="#8884d8"
+                    barSize={barSize}
+                    radius={[5, 5, 0, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
           {/* Two-column table section */}

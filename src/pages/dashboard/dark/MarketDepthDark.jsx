@@ -241,7 +241,7 @@ export default function MarketDepthDark() {
         />
         <hr className="border-gray-600 my-5 mx-5" />
 
-        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-6 md:mb-10 lg:mb-10">
           <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
             <p className="text-white text-xs md:text-sm lg:text-base mb-1">
               Momentum Stocks
@@ -256,7 +256,7 @@ export default function MarketDepthDark() {
             )}
           </div>
 
-          <div className="flex flex-col w-full md:w-[40%] mt-4 md:my-0">
+          <div className="flex flex-col w-full md:w-[40%] mt-10 md:my-0">
             <p className="text-white text-xs md:text-sm lg:text-base mb-1">
               Volume Spike
             </p>
