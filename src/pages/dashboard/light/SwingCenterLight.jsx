@@ -279,7 +279,7 @@ export default function SwingCenterLight() {
 
         <div className="flex flex-col md:flex-col lg:flex-row justify-around px-4 items-center min-h-1/2">
           <div className="flex flex-col w-full md:w-[full] lg:w-[40%] mt-4 md:my-0">
-            <p className="text-white text-xs md:text-sm lg:text-base mb-1">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Upside Potential
             </p>
             {dataLoading ? (
@@ -290,7 +290,7 @@ export default function SwingCenterLight() {
           </div>
 
           <div className="flex flex-col w-full md:w-[full] lg:w-[40%] mt-4 md:my-0">
-            <p className="text-white text-xs md:text-sm lg:text-base mb-1">
+            <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Downside Potential
             </p>
             {dataLoading ? (

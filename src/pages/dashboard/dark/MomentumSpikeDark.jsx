@@ -425,7 +425,7 @@ export default function MomentumSpikeDark() {
 
           {/* Two-column table section */}
           <div className="flex flex-col md:flex-col lg:flex-row justify-around px-4 md:px-10 lg:px-4 mb-25">
-            <div className="flex flex-col w-full md:w-full lg:w-[40%] mb-10">
+            <div className="flex flex-col w-full md:w-full lg:w-[40%] mt-10 mb-10">
               <p className="text-white text-xs md:text-sm lg:text-base mb-1">
                 Near Previous Day's High
               </p>
