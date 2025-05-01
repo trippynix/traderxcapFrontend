@@ -64,7 +64,7 @@ export default function Login() {
     if (dataAPI.success) {
       toast.success(dataAPI.message);
 
-      navigate("/settings");
+      navigate("/options-analysis");
       fetchUserDetails();
     }
 
