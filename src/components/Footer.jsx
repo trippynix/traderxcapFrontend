@@ -14,7 +14,7 @@ export default function Footer() {
         <div>
           <img
             src={footerlogo}
-            className="w-50 mt-[40px] md:mt-[50px] lg:mt-0 md:w-90 lg:w-110 md:ms-[-18px] lg:ms-[-25px]"
+            className="w-35 mt-[40px] md:mt-[50px] lg:mt-[40px] md:w-70 lg:w-80 md:ms-[-18px] lg:ms-[-25px]"
           />
           <div className="flex flex-col md:flex-row lg:flex-row mt-[50px] md:mt-[70px] lg:mt-[40px] mb-6 ms-[80px] md:ms-[-15px] lg:ms-[-25px]">
             <Link className="hover:text-violet-800 transition-colors duration-200 active:text-violet-800">

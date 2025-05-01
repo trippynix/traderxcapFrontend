@@ -75,7 +75,13 @@ const Sidebar = ({ tab }) => {
   "
       >
         <ul className="flex justify-center mt-5">
-          <img src={mainDashLogo} className="h-10" alt="main logo" />
+          <Link to={"/options-analysis"}>
+            <img
+              src={mainDashLogo}
+              className="h-5 mt-10 mb-[-20px] mr-7"
+              alt="main logo"
+            />
+          </Link>
         </ul>
 
         <ul className="flex flex-col items-start space-y-1 my-2 px-2">
