@@ -184,7 +184,7 @@ export default function IndexAnalysisLight() {
     NVDA30MAY: NVDA30MAY,
   };
 
-  const [timeRange, setTimeRange] = useState({ start: "09:15", end: "15:30" });
+  const [timeRange, setTimeRange] = useState({ start: "08:30", end: "15:30" });
   const [goBtnClicked, setGoBtnClicked] = useState(false);
   const [filterApplied, setFilterApplied] = useState(false);
 

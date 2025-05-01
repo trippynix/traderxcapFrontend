@@ -183,7 +183,7 @@ export default function IndexAnalysisDark() {
     NVDA30MAY: NVDA30MAY,
   };
 
-  const [timeRange, setTimeRange] = useState({ start: "09:15", end: "15:30" });
+  const [timeRange, setTimeRange] = useState({ start: "08:30", end: "15:30" });
   const [goBtnClicked, setGoBtnClicked] = useState(false);
   const [filterApplied, setFilterApplied] = useState(false);
 
@@ -227,8 +227,6 @@ export default function IndexAnalysisDark() {
       setFilterApplied(true); // Set filterApplied to true after filter is applied
     }
   }, [goBtnClicked, selectedStockData, timeRange]);
-
-  console.log(filteredData);
 
   // *********************** ////
   // BAR GRAPH PLOTTING DATA MANIPULATION ****************//

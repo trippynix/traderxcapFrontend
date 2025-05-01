@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 
 const generateTimeMarks = () => {
-  const startMinutes = 9 * 60 + 15; // 9:15 AM in minutes
+  const startMinutes = 8 * 60 + 30; // 8:30 AM in minutes
   const endMinutes = 15 * 60 + 30; // 3:30 PM in minutes
   const step = (endMinutes - startMinutes) / 10; // 11 parts means 10 intervals
 
