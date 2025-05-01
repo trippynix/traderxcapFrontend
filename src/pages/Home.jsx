@@ -48,7 +48,7 @@ export default function Home() {
           </p>
           <Link
             to="/pricing"
-            className="flex items-center gap-2 bg-white text-black font-semibold py-2 px-4 rounded-[2vw] shadow hover:bg-violet-800 hover:text-white transition-colors duration-200 my-3"
+            className="flex items-center gap-2 bg-white text-black font-semibold py-2 px-4 rounded-[2vw] shadow hover:bg-violet-800 hover:text-white active:bg-violet-800 active:text-white transition-colors duration-200 my-3"
           >
             Start Exploring
             <FaLocationArrow className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />

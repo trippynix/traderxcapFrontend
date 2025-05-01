@@ -409,7 +409,9 @@ export default function MomentumSpikeDark() {
         <div className="flex flex-col w-full bg-black">
           <DashboardHeaderDark
             title={"Momentum Spike"}
-            subTitle={"asdasdasdas"}
+            subTitle={
+              "Check out stocks that have experienced a surge in volume over the last 5 and 15 minutes, highlighting recent momentum spikes."
+            }
           />
           <hr className="border-gray-600 my-5 mx-5" />
 
@@ -418,7 +420,7 @@ export default function MomentumSpikeDark() {
             <h4 className="text-center text-xs md:text-sm lg:text-base mb-3 text-white">
               5 min Momentum Spike
             </h4>
-            <div className="ms-[-30px]">
+            <div className="ms-[-30px] md:ms-0 lg:ms-0">
               <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={sortedFiveMinData}>
                   <XAxis
@@ -447,7 +449,7 @@ export default function MomentumSpikeDark() {
             <h4 className="text-center text-xs md:text-sm lg:text-base mb-3 text-white">
               15 min Momentum Spike
             </h4>
-            <div className="ms-[-30px]">
+            <div className="ms-[-30px] md:ms-0 lg:ms-0">
               <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={sortedFifteenMinData}>
                   <XAxis

@@ -101,18 +101,28 @@ export default function MarketDepthDark() {
       iv_change: 6.8,
     },
   ];
-  const columns = [
+
+  // VOLATILITY TABLE DATA ***************//
+  const volatilityCol = [
     { key: "symbol", label: "Symbol" },
-    { key: "spike_factor", label: "Spike Factor" },
-    { key: "exchange", label: "Exchange" },
+    { key: "range", label: "Range" },
+    { key: "volatility", label: "Volatility" },
     { key: "volume", label: "Volume" },
   ];
-  // const columns = [
-  //   { key: "symbol", label: "Symbol" },
-  //   { key: "spike_factor", label: "Spike Factor" },
-  //   { key: "exchange", label: "Exchange" },
-  //   { key: "volume", label: "Volume" },
-  // ];
+
+  const volatilityData = [
+    { symbol: "AAPL", range: 3.25, volatility: 1.96, volume: 1820000 },
+    { symbol: "TSLA", range: 6.8, volatility: 2.84, volume: 2590000 },
+    { symbol: "AMZN", range: 4.1, volatility: 1.72, volume: 1940000 },
+    { symbol: "NVDA", range: 5.95, volatility: 2.14, volume: 2350000 },
+    { symbol: "MSFT", range: 2.1, volatility: 1.15, volume: 1670000 },
+    { symbol: "META", range: 3.9, volatility: 1.89, volume: 1460000 },
+    { symbol: "GOOG", range: 2.7, volatility: 1.25, volume: 1210000 },
+    { symbol: "NFLX", range: 4.45, volatility: 2.37, volume: 1320000 },
+    { symbol: "AMD", range: 3.6, volatility: 2.88, volume: 980000 },
+    { symbol: "BABA", range: 2.95, volatility: 1.8, volume: 850000 },
+  ];
+
   // MOMENTUM SPIKE DATA ****************//
   const momentumSpikeCol = [
     { key: "symbol", label: "Symbol" },
@@ -169,7 +179,6 @@ export default function MarketDepthDark() {
       exchange: "NASDAQ",
       volume: 29774112,
     },
-    { symbol: "TWTR", spike_factor: 1.23, exchange: "NYSE", volume: 17422031 },
     { symbol: "BABA", spike_factor: 1.67, exchange: "NYSE", volume: 35100993 },
     { symbol: "ORCL", spike_factor: 0.81, exchange: "NYSE", volume: 11220493 },
     {
@@ -279,7 +288,10 @@ export default function MarketDepthDark() {
             {dataLoading ? (
               <p className="text-gray-300">Loading data...</p>
             ) : (
-              <SortableTableDark data={data} columns={columns} />
+              <SortableTableDark
+                data={volatilityData}
+                columns={volatilityCol}
+              />
             )}
           </div>
 

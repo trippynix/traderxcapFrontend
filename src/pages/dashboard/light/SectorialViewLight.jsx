@@ -7,22 +7,21 @@ import SortableTableLight from "../sortTableComponent/SortableTableLight";
 import SectorialViewChart from "../../../components/SectorialViewChart";
 
 export default function SectorialViewLight() {
-  const stockData = [
-    { name: "Stock A", change: 1.2 },
-    { name: "Stock B", change: -0.5 },
-    { name: "Stock C", change: 2.1 },
-    { name: "Stock D", change: -0.8 },
-    { name: "Stock E", change: 1.6 },
-    { name: "Stock A", change: 1.2 },
-    { name: "Stock B", change: -0.5 },
-    { name: "Stock C", change: 2.1 },
-    { name: "Stock D", change: -0.8 },
-    { name: "Stock E", change: 1.6 },
-    { name: "Stock A", change: 1.2 },
-    { name: "Stock B", change: -0.5 },
-    { name: "Stock C", change: 2.1 },
-    { name: "Stock D", change: -0.8 },
-    { name: "Stock E", change: 1.6 },
+  const sectorData = [
+    { name: "Technology Services", change: 1.23 },
+    { name: "Finance", change: -0.48 },
+    { name: "Energy", change: 1.58 },
+    { name: "Healthcare", change: -0.31 },
+    { name: "Consumer Goods", change: 0.84 },
+    { name: "Utilities", change: 0.91 },
+    { name: "Industrials", change: -0.15 },
+    { name: "Real Estate", change: 0.57 },
+    { name: "Communication Services", change: 1.09 },
+    { name: "Materials", change: -0.75 },
+    { name: "Transportation", change: 1.12 },
+    { name: "Tech Hardware", change: 1.45 },
+    { name: "Financial Tech", change: 1.34 },
+    { name: "Insurance", change: -0.22 },
   ];
 
   // TECH SERVICES DATA *************//
@@ -972,12 +971,14 @@ export default function SectorialViewLight() {
       <div className="flex flex-col w-full bg-white">
         <DashboardHeaderLight
           title={"Sectorial View"}
-          subTitle={"asdasdasdas"}
+          subTitle={
+            "Explore sector performance and key insights to track trends and opportunities."
+          }
         />
         <hr className="border-gray-600 my-5 mx-5" />
 
         <div className="my-10 px-4">
-          <SectorialViewChart data={stockData} />
+          <SectorialViewChart data={sectorData} />
         </div>
         {/* Block 1 */}
         <div className="flex flex-col md:flex-row lg:flex-row justify-around px-4 mb-2 md:mb-10 lg:mb-10">

@@ -82,7 +82,7 @@ export default function Signup() {
 
       if (dataAPI.success) {
         toast.success(dataAPI.message);
-        navigate("/verify-email");
+        navigate("/login");
       }
       if (dataAPI.error) {
         toast.error(dataAPI.message);

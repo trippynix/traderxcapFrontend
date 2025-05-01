@@ -269,12 +269,12 @@ const PLLIGHT = () => {
                   * Please enter a valid phone number.
                 </small>
               )}
-              <a
+              {/* <a
                 className="ml-4 text-black border border-black px-2 py-1 rounded-md text-[10px] md:text-xs lg:text-sm cursor-pointer"
                 onClick={openPhoneModal}
               >
                 Verify
-              </a>
+              </a> */}
             </div>
             <PhoneOtpModal />
             <div className="my-1 md:my-2 lg:my-3 w-3/4">
@@ -312,12 +312,12 @@ const PLLIGHT = () => {
               <small className="text-xs md:text-sm lg:text-base text-black">
                 Email
               </small>
-              <a
+              {/* <a
                 className="ml-4 text-black border border-black px-2 py-1 rounded-md text-[10px] md:text-xs lg:text-sm cursor-pointer"
                 onClick={openEmailModal}
               >
                 Verify
-              </a>
+              </a> */}
             </div>
             <EmailOtpModal />
             <div className="my-1 md:my-2 lg:my-3 w-3/4">

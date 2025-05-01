@@ -33,15 +33,15 @@ const useResponsiveBarSize = () => {
 
 // RESPONSIVE AXES FONT SIZE ********************** //
 const useResponsiveFontSize = () => {
-  const [fontSize, setFontSize] = useState(12); // default
+  const [fontSize, setFontSize] = useState(8); // default
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 640) setFontSize(7); // xs
-      else if (width < 768) setFontSize(9); // sm
-      else if (width < 1024) setFontSize(9); // md
-      else setFontSize(12); // lg+
+      if (width < 640) setFontSize(4); // xs
+      else if (width < 768) setFontSize(6); // sm
+      else if (width < 1024) setFontSize(7); // md
+      else setFontSize(8); // lg+
     };
 
     handleResize(); // on mount
@@ -101,7 +101,7 @@ const OIChangeChart = ({ data }) => {
       >
         <BarChart
           data={data}
-          margin={{ top: 40, right: 5, left: -30, bottom: 5 }}
+          margin={{ top: 40, right: 5, left: -20, bottom: 5 }}
         >
           {/* Grid with faint lines */}
           <CartesianGrid

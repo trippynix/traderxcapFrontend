@@ -365,7 +365,9 @@ export default function MomentumSpikeLight() {
       <div className="flex flex-col w-full bg-white">
         <DashboardHeaderLight
           title={"Momentum Spike"}
-          subTitle={"asdasdasdas"}
+          subTitle={
+            "Check out stocks that have experienced a surge in volume over the last 5 and 15 minutes, highlighting recent momentum spikes."
+          }
         />
         <hr className="border-gray-600 my-5 mx-5" />
         <div className="container mx-auto mt-4 p-3">

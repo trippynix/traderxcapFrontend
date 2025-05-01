@@ -277,7 +277,7 @@ export default function SwingCenterLight() {
         />
         <hr className="border-gray-600 my-5 mx-5" />
 
-        <div className="flex flex-col md:flex-col lg:flex-row justify-around px-4 items-center min-h-1/2">
+        <div className="flex flex-col md:flex-col lg:flex-row justify-around px-4 items-center mt-4">
           <div className="flex flex-col w-full md:w-[full] lg:w-[40%] mt-4 md:my-0">
             <p className="text-black text-xs md:text-sm lg:text-base mb-1">
               Upside Potential

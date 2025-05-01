@@ -59,7 +59,9 @@ const SortableTableDark = ({ data, columns }) => {
                   {col.key === "exchange" ||
                   col.key === "vol_spike" ||
                   col.key === "previousHigh" ||
-                  col.key === "previousLow" ? (
+                  col.key === "volatility" ||
+                  col.key === "previousLow" ||
+                  col.key === "preMarketChangePercent" ? (
                     <div className="p-0 border-2 border-white rounded-lg bg-[#01fd1f]">
                       <span className="text-black font-medium">
                         {row[col.key]}
@@ -69,7 +71,8 @@ const SortableTableDark = ({ data, columns }) => {
                   {col.key === "volume" ||
                   col.key === "iv_change" ||
                   col.key === "priceDifference" ||
-                  col.key === "momentum_score" ? (
+                  col.key === "momentum_score" ||
+                  col.key === "preMarketPrice" ? (
                     <div className="p-0 border-2 border-white rounded-lg bg-[#8677FF] mx-3">
                       <span className="text-black font-medium">
                         {row[col.key]}
@@ -83,7 +86,10 @@ const SortableTableDark = ({ data, columns }) => {
                     col.key !== "previousHigh" &&
                     col.key !== "priceDifference" &&
                     col.key !== "previousLow" &&
-                    col.key !== "momentum_score" && (
+                    col.key !== "momentum_score" &&
+                    col.key !== "volatility" &&
+                    col.key !== "preMarketChangePercent" &&
+                    col.key !== "preMarketPrice" && (
                       <div className="p-0 mx-3 bg-white rounded">
                         <span className="text-black font-medium">
                           {row[col.key]}

@@ -971,7 +971,9 @@ export default function SectorialViewDark() {
       <div className="flex flex-col w-full bg-black">
         <DashboardHeaderDark
           title={"Sectorial View"}
-          subTitle={"asdasdasdas"}
+          subTitle={
+            "Explore sector performance and key insights to track trends and opportunities."
+          }
         />
         <hr className="border-gray-600 my-5 mx-5" />
 

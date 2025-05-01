@@ -41,7 +41,7 @@ const convertToTime = (value) => {
   return `${hours}:${mins.toString().padStart(2, "0")}`;
 };
 
-export default function SliderDark() {
+export default function SliderDark({ onTimeChange, onGoButtonClick }) {
   const [values, setValues] = useState([0, 100]);
 
   // Minimum gap in percentage
@@ -60,6 +60,13 @@ export default function SliderDark() {
     }
 
     setValues([Math.max(0, min), Math.min(100, max)]);
+
+    const convertedTimes = [
+      convertToTime(Math.max(0, min)),
+      convertToTime(Math.min(100, max)),
+    ];
+
+    onTimeChange?.(convertedTimes[0], convertedTimes[1]); // call only if prop is passed
   };
 
   const sendDataToBackend = async () => {
@@ -77,7 +84,7 @@ export default function SliderDark() {
     }
   };
 
-  console.log(values.map(convertToTime));
+  // console.log(values.map(convertToTime));
   return (
     <div className="flex flex-col items-center w-full">
       <Box sx={{ width: "100%" }}>
@@ -131,8 +138,8 @@ export default function SliderDark() {
 
       <button
         type="button"
-        className="bg-black text-white text-[10px] md:text-xs lg:text-base border border-white px-1 lg:px-6 py-1 lg:py-2 rounded-md hover:bg-[#4c4c84] hover:cursor-pointer active:bg-[#4c4c84] transition-all duration-300 w-1/4 text-center"
-        onClick={sendDataToBackend}
+        className="bg-black text-white text-[10px] md:text-xs lg:text-base border border-white px-1 lg:px-6 py-1 lg:py-2 rounded-md hover:bg-white hover:cursor-pointer hover:text-black active:bg-white active:text-black transition-all duration-300 w-1/4 text-center"
+        onClick={onGoButtonClick}
       >
         GO
       </button>

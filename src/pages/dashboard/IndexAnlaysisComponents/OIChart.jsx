@@ -35,15 +35,15 @@ const useResponsiveBarSize = () => {
 
 // RESPONSIVE AXES FONT SIZE ********************** //
 const useResponsiveFontSize = () => {
-  const [fontSize, setFontSize] = useState(12); // default
+  const [fontSize, setFontSize] = useState(8); // default
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 640) setFontSize(7); // xs
-      else if (width < 768) setFontSize(9); // sm
-      else if (width < 1024) setFontSize(9); // md
-      else setFontSize(12); // lg+
+      if (width < 640) setFontSize(4); // xs
+      else if (width < 768) setFontSize(6); // sm
+      else if (width < 1024) setFontSize(7); // md
+      else setFontSize(8); // lg+
     };
 
     handleResize(); // on mount
@@ -65,7 +65,8 @@ const ZigzagPattern = ({ id, color }) => (
 const renderCustomBar = (props, type) => {
   const { x, y, width, height, payload } = props;
   const oiValue = type === "call" ? payload.callOI : payload.putOI;
-  const changeValue = type === "call" ? payload.callChange : payload.putChange;
+  const changeValue =
+    type === "call" ? payload.callChangePct : payload.putChangePct; // CHANGED TO callChangePct and putChangePct, once you get api change it back to callChange and putChange
   const color = type === "call" ? "#E96667" : "#64CE6B";
   const colorPattern = type === "call" ? "red" : "green";
 
@@ -221,7 +222,7 @@ const OIChart = ({ data }) => {
       >
         <BarChart
           data={data}
-          margin={{ top: 40, right: 5, left: -30, bottom: 5 }}
+          margin={{ top: 40, right: 5, left: -5, bottom: 5 }}
         >
           <CartesianGrid
             stroke="rgba(255, 255, 255, 0.2)"
